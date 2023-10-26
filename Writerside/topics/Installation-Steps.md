@@ -9,7 +9,7 @@ You can easily run this app if you have the necessary modules. Issue is not ever
 so before you run the app, execute ```npm install``` to make sure you have all the dependecies, then
 run with ```npm start``` to start the development server.  
 
-### Running with Docker
+### Running with Docker (WORK IN PROGRESS)
 This is the more complicated step but its the better step in terms of stability and performance.  
 If you pulled from the master branch then you already have a ```Dockerfile``` there. In
 the command line execute ```docker image build -t wildcats-project:latest .``` to create a Docker image.  
