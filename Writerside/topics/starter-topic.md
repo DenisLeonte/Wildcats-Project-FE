@@ -1,7 +1,7 @@
 # The true home page
 
 Basically all this is just a glorified switch, where the path is checked
-and redirections happen. There are 4 predefined paths: ```/home```,```/login```,
+and redirections happen. There are 4 predefined paths: ```/home```,[```/login```](Login-Page.md),
 ```/register``` and ```/webapp```.  
 If you enter anything else you will be redirected to ```/home```,
 but this will change in the future.
