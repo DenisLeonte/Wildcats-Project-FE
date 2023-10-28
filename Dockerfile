@@ -1,6 +1,11 @@
-FROM node:20-alpine as builder
-WORKDIR /Wildcats-Project-FE
-COPY public/ /Wildcats-Project-FE/public
-COPY package.json /Wildcats-Project-FE/
+FROM node:18.14
+
+WORKDIR /app
+
+COPY package*.json ./
+
 RUN npm install
+
+EXPOSE 3000
+
 CMD ["npm","start"]
