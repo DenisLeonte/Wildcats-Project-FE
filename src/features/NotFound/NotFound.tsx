@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Home: React.FC = () => {
+function NotFound(){
     return (
         <div>
-            Home component
+            Not Found
         </div>
     );
 }
 
-export default Home;
+export default NotFound;

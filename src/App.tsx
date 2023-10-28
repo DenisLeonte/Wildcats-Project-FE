@@ -1,24 +1,25 @@
-import React from 'react';
-import './App.css';
-import Home from './Home/Home'
+import './styles/App.css';
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-import Login from "./Login/Login";
-import Register from "./Register/Register";
-import WebApp from "./WebApp/WebApp";
+import Login from "./features/Login/Login";
+import Register from "./features/Register/Register";
+import WebApp from "./features/WebApp/WebApp";
+import Home from './features/Home/Home'
+import NotFound from "./features/NotFound/NotFound";
+import Navbar from "./components/Navbar/Navbar";
 
-function App() {
+function App() {    
   return (
     <div className="App">
       <Router>
+        <Navbar/>
         <Switch>
             <Route path="/home" component={Home}/>
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <Route path="/webapp" component={WebApp}/>
-            <Route>
-                // Redirects to home when bogus is inserted.
-                // TODO: Make a 404 Page
-                <Redirect to="/home"></Redirect>
+            <Route path="/notfound" component={NotFound}/>
+            <Route path="/">
+                <Redirect to="/notfound"></Redirect>
             </Route>
         </Switch>
       </Router>

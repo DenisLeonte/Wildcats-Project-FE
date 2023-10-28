@@ -8,10 +8,19 @@ Main contributors to this code:
 - Diana Vacareanu
 - Maria Ianc
 - Mircea Ignatiuc
+- Andrei Pantazy
+- Lucas Serghie
 
 ### Prerequisites:
 - ```node 21.1.0```
 - ```npm```
+
+### Run with Docker
+
+1. Clone the repository
+2. Make sure you have docker running
+3. In the terminal run ```docker compose up -d --build```
+4. Open the app at [```localhost```](http://localhost:3000/home)
 
 ### Installation:
 1. Clone the repository
