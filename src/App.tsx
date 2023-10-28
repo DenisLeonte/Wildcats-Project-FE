@@ -6,6 +6,7 @@ import Register from "./Register/Register";
 import WebApp from "./WebApp/WebApp";
 import Home from './Home/Home'
 import Navbar from "./Common/navbar/navbar";
+import NotFound from "./NotFound/NotFound";
 
 function App() {    
   return (
@@ -17,10 +18,9 @@ function App() {
             <Route path="/login" component={Login}/>
             <Route path="/register" component={Register}/>
             <Route path="/webapp" component={WebApp}/>
-            <Route>
-                {/*Redirects to home when bogus is inserted.
-                TODO: Make a 404 Page*/}
-                <Redirect to="/home"></Redirect>
+            <Route path="/notfound" component={NotFound}/>
+            <Route path="/">
+                <Redirect to="/notfound"></Redirect>
             </Route>
         </Switch>
       </Router>
