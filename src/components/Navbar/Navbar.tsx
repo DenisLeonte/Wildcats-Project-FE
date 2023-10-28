@@ -1,11 +1,10 @@
 import React from 'react'
 import {Link} from "react-router-dom";
-import RedirectButton from "../redirectButton/RedirectButton";
+import RedirectButton from "../RedirectButton/RedirectButton";
 
 function Navbar(){
     return(
       <div>
-
           <RedirectButton text='Home' path='/home'/>
           <RedirectButton text='Login' path='/login'/>
           <RedirectButton text='Register' path='/register'/>
