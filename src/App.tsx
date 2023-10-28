@@ -1,12 +1,11 @@
-import React from 'react';
-import './App.css';
+import './styles/App.css';
 import {BrowserRouter as Router, Redirect, Route, Switch} from "react-router-dom";
-import Login from "./Login/Login";
-import Register from "./Register/Register";
-import WebApp from "./WebApp/WebApp";
-import Home from './Home/Home'
-import Navbar from "./Common/navbar/navbar";
-import NotFound from "./NotFound/NotFound";
+import Login from "./features/Login/Login";
+import Register from "./features/Register/Register";
+import WebApp from "./features/WebApp/WebApp";
+import Home from './features/Home/Home'
+import NotFound from "./features/NotFound/NotFound";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {    
   return (
