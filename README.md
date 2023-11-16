@@ -19,8 +19,9 @@ Main contributors to this code:
 
 1. Clone the repository
 2. Make sure you have docker running
-3. In the terminal run ```docker compose up -d --build```
-4. Open the app at [```localhost```](http://localhost:3000/home)
+3. Create the static files volume by running ```docker volume create static_files``` 
+4. In the terminal run ```docker compose up -d --build```
+5. Open the app at [```localhost```](http://localhost:3000/home)
 
 ### Installation:
 1. Clone the repository
