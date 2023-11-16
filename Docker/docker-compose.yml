@@ -8,11 +8,12 @@ services:
              # NEEDS TO BE UPDATED FOR PRODUCTION
       - ../:/app
       - /app/node_modules
-      - static_files:/app/build
+      - ../build:/local_build
+      - static_files:/volume_build
+    command: /app/Scripts/startup.sh
+
     ports:
       - '3000:3000'
-    environment:
-      - CHOKIDAR_USEPOLLING=true
 
 volumes:
   static_files:

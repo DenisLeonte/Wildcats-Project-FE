@@ -5,12 +5,12 @@ FROM node:18.14
 
 WORKDIR /app
 
+RUN apt-get update && apt-get install -y inotify-tools rsync netcat
+
 COPY package*.json tsconfig.json ./
-COPY build ./build
-COPY public ./public
+COPY ./Scripts/startup.sh ./Scripts/startup.sh
+RUN chmod +x ./Scripts/startup.sh
 
 RUN npm install 
 
 EXPOSE 3000
-
-CMD ["npm", "start"]
