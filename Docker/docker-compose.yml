@@ -4,11 +4,17 @@ services:
     build:
       context: ..
       dockerfile: Docker/Dockerfile
-    volumes:
+    volumes: # TO BE USED FOR DEVELOPMENT ONLY
+             # NEEDS TO BE UPDATED FOR PRODUCTION
       - ../:/app
       - /app/node_modules
+      - ../build:/local_build
+      - static_files:/volume_build
+    command: bash /app/Scripts/startup.sh
+
     ports:
       - '3000:3000'
-    environment:
-      - WATCHPACK_POLLING=true
-      - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  static_files:
+    external: true

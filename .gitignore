@@ -12,6 +12,8 @@
 /build
 
 # misc
+/Writerside
+*/Writerside
 .DS_Store
 .env.local
 .env.development.local
@@ -24,3 +26,4 @@ yarn-error.log*
 /.idea
 /.vscode
 /.vs
+Wildcats-Project-FE.code-workspace
