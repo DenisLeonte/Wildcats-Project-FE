@@ -10,7 +10,7 @@ services:
       - /app/node_modules
       - ../build:/local_build
       - static_files:/volume_build
-    command: /app/Scripts/startup.sh
+    command: bash /app/Scripts/startup.sh
 
     ports:
       - '3000:3000'

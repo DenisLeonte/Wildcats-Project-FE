@@ -13,4 +13,6 @@ RUN chmod +x ./Scripts/startup.sh
 
 RUN npm install 
 
+
+
 EXPOSE 3000
