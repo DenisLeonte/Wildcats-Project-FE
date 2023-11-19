@@ -1,13 +1,13 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
-import CityCostOfLivingPopup from '../../components/COFDetailsCityPopup/COFDetails';
+import CityCostOfLivingPopup from '../../components/CostOfLivingPopup/CostOfLivingPopup';
 
 const WebApp: React.FC = () => {
     return (
         <div>
             WebApp component
             <Popup trigger={<button>Test</button>} modal>
-                <CityCostOfLivingPopup></CityCostOfLivingPopup>
+                <CityCostOfLivingPopup townName="Rome"/>
             </Popup>
         </div>
     );

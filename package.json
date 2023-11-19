@@ -46,6 +46,7 @@
     "@types/react-router-dom": "^5.3.3",
     "eslint": "^8.52.0",
     "jest-worker": "^29.7.0",
+    "openai": "^4.19.0",
     "reactjs-popup": "^2.0.6"
   }
 }
