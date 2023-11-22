@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import './style.css'
+import { City } from '../../types/City';
+import { CostOfLivingData } from '../../types/CostOfLivingData';
 
 interface CostOfLivingPopupProps {
-    townName: string;
+    town:City,
+    costOfLivingData:CostOfLivingData
   }
 
-const CityCostOfLivingPopup: React.FC<CostOfLivingPopupProps> = ({ townName }) => {
+const CityCostOfLivingPopup: React.FC<CostOfLivingPopupProps> = ({town,costOfLivingData}) => {
   let [cityName,setCityName] = useState("{town name}");
-  let [description,setDescription] = useState("{town description}");
-  let [costOfLivingIndex,setCostOfLivingIndex] = useState("{placeholder}");
-  let [medianRent,setMedianRent] = useState("{placeholder}");
-  let [groceryCost,setGroceryCost] = useState("{placeholder}");
 
   useEffect(() => {
     const fetchData = async() => {
-        // API calls here, syntax: const response = await fetch("api",{headers,body})
-        // check the response and continue with the program
-        
+
         
     };
 
@@ -32,14 +29,14 @@ const CityCostOfLivingPopup: React.FC<CostOfLivingPopupProps> = ({ townName }) =
     <div className="popup-container">
       <span className="close-btn" onClick={closePopup}>&times;</span>
       <div className="city-info">
-        <h2>{cityName}</h2>
+        <h2>{town.name}</h2>
         <img className="city-image" src="{placeholder}" alt="City Image" />
-        <p className="description">{description}</p>
         <div className="cost-details">
-          <p>Cost of Living Index: {costOfLivingIndex}</p>
-          <p>Median Rent: {medianRent}</p>
-          <p>Grocery Cost: {groceryCost}</p>
-          {/* Add more relevant cost of living information */}
+        <ul>
+            <li key={costOfLivingData.id}>
+              {costOfLivingData.item} Price: {costOfLivingData.price} Added on: {costOfLivingData.date.toString()}
+            </li>
+          </ul>
         </div>
       </div>
     </div>
