@@ -144,6 +144,7 @@
   height: 11%;
   width: 100%;
   align-items: center;
+  justify-content: flex-end;
 }
 
 .back_icon{
@@ -178,6 +179,7 @@ input{
   font-weight: 400;
   line-height: normal;
   border:0;
+  margin-right:auto;
 }
 
 .sign_in_but{
@@ -194,8 +196,9 @@ input{
   display: flex;
   height: 56px;
   padding: 0 30px;
-  margin-left: 100px;
+  margin-left: auto;
   align-items: center;
+  justify-content: center;
 }
 
 .sign_up_but{
@@ -215,4 +218,5 @@ input{
   font-weight: bold;
   line-height: normal;
   margin-left:20px;
+  margin-right:50px;
 }
