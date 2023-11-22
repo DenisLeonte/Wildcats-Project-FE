@@ -7,7 +7,7 @@ import { Country } from '../../types/Country';
 
 
 
-const WebApp: React.FC = () => {
+const CostOfLivingComp: React.FC = () => {
     const [countries, setCountries] = useState<Country[]>([]);
   const [cities, setCities] = useState<City[]>([]);
   const [costOfLivingData, setCostOfLivingData] = useState<CostOfLivingData[]>([]);
@@ -93,4 +93,4 @@ const WebApp: React.FC = () => {
   }
 }
 
-export default WebApp;
+export default CostOfLivingComp;
