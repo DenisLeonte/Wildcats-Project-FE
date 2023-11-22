@@ -28,11 +28,28 @@ function App(){
         scrollOverflow={true}
         credits={creds}
         gplv3-license={true}
+        parallax={true}
+        dragAndMove={true}
+        autoScrolling={true}
         render={({state}) =>{
           return(
             <ReactFullpage.Wrapper>
-              <div className="section background_image1">
-
+              <div className="section">
+                <div className="slide background slide1 title_font">
+                  <div className="title1">The journey not only broadens the mind but enriches the soul.</div>
+                </div>
+                <div className="slide background slide2 title_font">
+                  <div className="title2">Travel is the only thing you can buy that makes you richer</div>
+                </div>
+                <div className="slide background slide3 title_font">
+                  <div className="title3">The more you travel,<br/> the more you realize how much there is to see.</div>
+                </div>
+                <div className="slide background slide4 title_font">
+                  <div className="title4">Go where you feel most alive.</div>
+                </div>
+                <div className="slide background slide5 title_font">
+                  <div className="title5">Every corner of the world<br/> holds a story waiting to be discovered</div>
+                </div>
               </div>
               <div className="section"> <WebApp/></div>
             </ReactFullpage.Wrapper>
