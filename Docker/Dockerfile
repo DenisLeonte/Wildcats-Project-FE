@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y inotify-tools rsync netcat
 COPY package*.json tsconfig.json ./
 COPY ./Scripts/startup.sh ./Scripts/startup.sh
 RUN chmod +x ./Scripts/startup.sh
+RUN chmod +x ./Scripts/build_cont.sh
 
 RUN npm install 
 
