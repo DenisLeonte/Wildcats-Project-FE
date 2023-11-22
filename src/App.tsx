@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactFullpage from '@fullpage/react-fullpage';
+import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import WebApp from './features/WebApp/WebApp';
 
 //Asta e o magarie foarte mare, am furat definitia din codul sursa de la fullpage.js ca de altfel nu ma lasa but hey it works
@@ -9,9 +9,11 @@ type Credits = {
   position?: "left" | "right"
 }
 
-
 function App(){
-  const anchors = ["page1","page2","page3"];
+  const anchors = ["landing","page2","page3"];
+  const interval = 5000;
+  var g_interval;
+  var fullpageAPI:fullpageApi;
   const creds:Credits = {
     enabled:true,
     label:"made possible by fullPage.js",
@@ -31,7 +33,17 @@ function App(){
         parallax={true}
         dragAndMove={true}
         autoScrolling={true}
-        render={({state}) =>{
+        afterLoad={function(origin, destination, direction){
+          clearInterval(interval);
+          const lapse = interval;
+          if(destination.item.querySelectorAll('.fp-slides').length){
+            g_interval = setInterval(function(){
+              fullpageAPI.moveSlideRight();
+            },lapse)
+          }
+        }}
+        render={({state,fullpageApi}) =>{
+          fullpageAPI=fullpageApi
           return(
             <ReactFullpage.Wrapper>
               <div className="section">
