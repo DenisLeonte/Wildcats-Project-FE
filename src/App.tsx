@@ -14,7 +14,7 @@ type Credits = {
 
 function App(){
   const anchors = ["landing","page2","page3"];
-  const interval = 7500;
+  const interval = 5000;
   var g_interval:NodeJS.Timer;
   var fullpageAPI:fullpageApi;
   const creds:Credits = {
@@ -98,16 +98,17 @@ function App(){
         parallax={true}
         dragAndMove={true}
         autoScrolling={true}
-        // afterLoad={function(origin, destination, direction){
-        //   //responsible for the "auto slide" feature
-        //   clearInterval(g_interval);
-        //   const lapse = interval;
-        //   if(destination.item.querySelectorAll('.fp-slides').length){
-        //     g_interval = setInterval(function(){
-        //       fullpageAPI.moveSlideRight();
-        //     },lapse)
-        //   }
-        // }}
+        keyboardScrolling={true}
+        afterLoad={function(origin, destination, direction){
+          //responsible for the "auto slide" feature
+          clearInterval(g_interval);
+          const lapse = interval;
+          if(destination.item.querySelectorAll('.fp-slides').length){
+            g_interval = setInterval(function(){
+              fullpageAPI.moveSlideRight();
+            },lapse)
+          }
+        }}
         render={({state,fullpageApi}) =>{
           fullpageAPI=fullpageApi
           return(
