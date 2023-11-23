@@ -1,38 +1,222 @@
-.App {
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.eot");
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.woff") format("woff");
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.svg") format("svg");
+  
+
+}
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
+.background{
+  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  position:relative;
+}
+
+.slide1{
+  background-position: top center;
+  background-image: url('../../assets/slider_page1.jpeg');
+}
+
+.slide2{
+  background-image: url('../../assets/slider_page2.jpeg');
+}
+
+.slide3{
+  background-position: center 40%;
+  background-image: url("../../assets/slider_page3.jpeg");
+}
+
+.slide4{
+  background-image: url("../../assets/slider_page4.jpeg");
+}
+
+.slide5{
+  background-image: url("../../assets/slider_page5.jpeg");
+}
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
+.title_font{
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 1px;
+  color: #CCC;
   text-align: center;
+  font-family: Lusitana;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.title1{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:370px;
+  padding-left:60px;
+  padding-bottom:40px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.title2{
+  position:absolute;
+  left:0;
+  top:40%;
+  width: 400px;
+  padding-left: 80px
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.title3{
+  position:absolute;
+  left:0;
+  top:40%;
+  width: 600px;
+  padding-left: 80px
+}
+
+.title4{
+  position:absolute;
+  left:4%;
+  top:10%;
+}
+
+.title5{
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  padding-left:60px;
+  padding-bottom:40px;
+}
+
+.app{
+  position:relative;
+}
+
+.navbar{
   display: flex;
-  flex-direction: column;
+  position:absolute;
+  top:0;
+  z-index:5;
+  overflow:hidden;
+  height: 11%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.back_icon{
+  padding:18px 14px;
+}
+
+.logo_icon{
+  padding:22px 10px;
+}
+
+.nav_button{
+  text-align: center;
+  padding:22px 50px;
+}
+
+input{    
+  height:16px;
+  display: flex;
+  width: 510px;
+  padding: 16px;
+  margin-left:30px;
+  align-items: center;
+  gap: 10px; 
+  border-radius: 4px;
+  background: url("../../assets/Icon\ pack.svg") 97% 50% no-repeat;
+  background-color:white;
+  color: var(--Grey-input-text, #ABABAB);
+  /* Text */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border:0;
+  margin-right:auto;
+}
+
+.sign_in_but{
+  color: var(--VerdeScris, #004006);
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  background-color: #FFF;
+  border:#004006 1px;
+  border-radius: 4px;
+  display: flex;
+  height: 56px;
+  padding: 0 30px;
+  margin-left: auto;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sign_up_but{
+  display: flex;
+  height: 56px;
+  padding: 0 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: var(--VerdeScris, #004006);
+  color: var(--White-background, #FFF);
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  margin-left:20px;
+  margin-right:50px;
 }
