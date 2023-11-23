@@ -165,7 +165,7 @@ input{
   display: flex;
   width: 510px;
   padding: 16px;
-  margin-left:30px;
+  margin-left:150px;
   align-items: center;
   gap: 10px; 
   border-radius: 4px;
@@ -219,4 +219,12 @@ input{
   line-height: normal;
   margin-left:20px;
   margin-right:50px;
+}
+
+.fp-slidesNav{
+  padding-left: 47%;
+}
+
+ul li a span, .fp-slidesNav ul li a span{
+  background: #FFF;
 }
