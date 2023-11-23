@@ -3,5 +3,5 @@
 while true; do
     npm run build
 
-    sleep 10
+    sleep 20
 done
