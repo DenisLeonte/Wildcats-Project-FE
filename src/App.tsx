@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
-import WebApp from './features/CostOfLivingComp/CostOfLivingComp';
-// import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 import "./styles/App.css"
-import CostOfLivingComp from './features/CostOfLivingComp/CostOfLivingComp';
+import CostOfLivingComp from './components/features/CostOfLivingComp/CostOfLivingComp';
+import {ComposableMap, Geographies, Geography} from "react-simple-maps";
 
 //Asta e o magarie foarte mare, am furat definitia din codul sursa de la fullpage.js ca de altfel nu ma lasa but hey it works
 type Credits = {
@@ -15,6 +14,7 @@ type Credits = {
 function App(){
   const anchors = ["landing","page2","page3"];
   const interval = 5000;
+  const geoUrl = "../assets/features.json"
   var g_interval:NodeJS.Timer;
   var fullpageAPI:fullpageApi;
   const creds:Credits = {
@@ -88,8 +88,6 @@ function App(){
       </div>
       <ReactFullpage
         anchors={anchors}
-        navigation
-        navigationTooltips={anchors}
         licenseKey={process.env.REACT_APP_FULLPAGE_LK}
         scrollingSpeed={1000}
         scrollOverflow={true}
@@ -130,7 +128,9 @@ function App(){
                   <div className="title5">Every corner of the world<br/> holds a story waiting to be discovered</div>
                 </div>
               </div>
-              <div className="section"> <CostOfLivingComp/></div>
+              <div className="section">
+                <CostOfLivingComp/>
+              </div>
             </ReactFullpage.Wrapper>
           )
         }}
