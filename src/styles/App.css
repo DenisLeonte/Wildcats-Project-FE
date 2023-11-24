@@ -191,8 +191,9 @@ input{
   font-weight: bold;
   line-height: normal;
   background-color: #FFF;
-  border:#004006 1px;
+  border:#004006 solid;
   border-radius: 4px;
+  border-width: 2px;
   display: flex;
   height: 56px;
   padding: 0 30px;
@@ -227,4 +228,8 @@ input{
 
 ul li a span, .fp-slidesNav ul li a span{
   background: #FFF;
+}
+
+.map_bg{
+  background-color: #B2C8BA;
 }

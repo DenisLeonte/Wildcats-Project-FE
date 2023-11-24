@@ -97,7 +97,7 @@ function App(){
         scrollOverflow={true}
         credits={creds}
         gplv3-license={true}
-        parallax={true}
+        cards={true}
         dragAndMove={true}
         autoScrolling={true}
         keyboardScrolling={true}
@@ -135,7 +135,7 @@ function App(){
                   <div className="title5">Every corner of the world<br/> holds a story waiting to be discovered</div>
                 </div>
               </div>
-              <div className="section">
+              <div className="section map_bg">
                 <EuroMap/>
               </div>
               <div className="section">
