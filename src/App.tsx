@@ -139,7 +139,7 @@ function App(){
                 <EuroMap/>
               </div>
               <div className="section">
-                <CostOfLivingComp/>
+                {/* <CostOfLivingComp/> */}
               </div>
             </ReactFullpage.Wrapper>
           )
