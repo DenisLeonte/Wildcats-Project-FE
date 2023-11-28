@@ -165,6 +165,41 @@ function fly(dest:string){
             lat=47.07920309172613;
             zoom=7.18985555951121;
             break;
+        case 'Luxembourg':
+            lng=6.08016603526724;
+            lat=49.80370219995373;
+            zoom=9.006173462385286;
+            break;
+        case 'Liechtenstein':
+            lng=9.47905342115564;
+            lat=47.15985018723481;
+            zoom=10.706823922829942;
+            break;
+        case 'Andorra':
+            lng=1.5749596966935542;
+            lat=42.540449607902104;
+            zoom=10.706823922829965;
+            break;
+        case 'Malta':
+            lng=14.317878715567531;
+            lat=35.92109958303769;
+            zoom=10.4215577425411;
+            break;
+        case 'Turkey':
+            lng=27.835664920164504;
+            lat=41.31417670768968;
+            zoom=8.132816725671319;
+            break;
+        case 'Sweden':
+            lng=9;
+            lat=61.369985436291955;
+            zoom=4.854423175714383;
+            break;
+        case 'Norway':
+            lng=9;
+            lat=61.369985436291955;
+            zoom=4.854423175714383;
+            break;
     };
     return({center:[lng,lat] as LngLatLike,zoom:zoom,essential:true});
 }
