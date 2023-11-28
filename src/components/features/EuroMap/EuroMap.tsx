@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef } from 'react';
-import mapboxgl, { CameraOptions, FillLayout, FlyToOptions, LngLatLike, Map } from 'mapbox-gl'
+import mapboxgl, { CameraOptions, FillLayout, FilterOptions, FlyToOptions, LngLatLike, Map } from 'mapbox-gl'
 import '../../../styles/EuroMap.css'
 import { log } from 'console';
 import flyToData from './flyToData';
@@ -14,7 +14,7 @@ function EuroMap() {
   const mapCenter:LngLatLike = [10, 45]; // Center of Europe
   const southwest:LngLatLike = [-12,33];
   const northeast:LngLatLike = [30,70];
-  let selectedCountry:string=""
+  let selectedCountry:string="";
 
   useEffect(() =>{
     const enabled:string = process.env.REACT_APP_MAPBOX_ENABLED!;
@@ -35,10 +35,7 @@ function EuroMap() {
         e_map.current!.addLayer(
           {
             id: 'country-boundaries',
-            source: {
-              type: 'vector',
-              url: 'mapbox://mapbox.country-boundaries-v1',
-            },
+            source:'countries',
             'source-layer': 'country_boundaries',
             type: 'fill',
             paint: {
@@ -48,13 +45,12 @@ function EuroMap() {
           },
           'country-label'
         );
-
         e_map.current!.on('click','country-boundaries',function(e){
           
           const { lng, lat } = e_map.current!.getCenter();
           const zoom = e_map.current!.getZoom();
           let composed_string:string = "case '"+ e.features![0].properties!.name_en+"':\nlng="+lng+";\nlat="+lat+";\nzoom="+zoom+";\nbreak;";
-          // console.log(composed_string);
+          console.log(composed_string);
           selectedCountry = e.features![0].properties!.name_en;
           let flyOpt = fly(selectedCountry);
           e_map.current!.easeTo(flyOpt as FlyToOptions);
@@ -63,17 +59,6 @@ function EuroMap() {
       })
       
     }
-    // DEV PURPOSES ONLY, JUST TO GET COORDS
-    // if(e_map.current)
-    // {
-    //   e_map.current.on('move', () =>{
-    //     //@ts-ignore
-    //     const { lng, lat } = e_map.current.getCenter();
-    //     //@ts-ignore
-    //     const zoom = e_map.current.getZoom();
-    //     console.log('Current Coordinates:', { lng, lat });
-    //     console.log('Current Zoom:',zoom)
-    // })}
   });
 
   return (
