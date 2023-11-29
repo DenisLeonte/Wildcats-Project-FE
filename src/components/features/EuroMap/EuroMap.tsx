@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl, { CameraOptions, FillLayout, FilterOptions, FlyToOptions, LngLatLike, Map } from 'mapbox-gl'
 import '../../../styles/EuroMap.css'
 import { log } from 'console';
@@ -9,7 +9,7 @@ import fly from './flyToData';
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
-  const mapContainer = useRef<HTMLDivElement |null>(null);
+    const mapContainer = useRef<HTMLDivElement |null>(null);
   let e_map = useRef<Map|null>(null);
   const mapCenter:LngLatLike = [10, 45]; // Center of Europe
   const southwest:LngLatLike = [-12,33];
@@ -22,7 +22,7 @@ function EuroMap() {
       if(e_map.current) return;
       e_map.current = new mapboxgl.Map({
         container: 'map-container',
-        style:'mapbox://styles/denis9365/clpbqkah6008t01p9fxj21p0u',
+        style:process.env.REACT_APP_MAPBOX_STYLE,
         center: mapCenter,
         zoom:4.5,
         maxBounds:[southwest,northeast],
@@ -30,7 +30,7 @@ function EuroMap() {
       e_map.current.on('load',function(){
         e_map.current!.addSource('countries',{
           'type':'vector',
-          'url': 'mapbox://mapbox.country-boundaries-v1'
+          'url': process.env.REACT_APP_MAPBOX_LAYER_URL
         });
         e_map.current!.addLayer(
           {
@@ -46,7 +46,6 @@ function EuroMap() {
           'country-label'
         );
         e_map.current!.on('click','country-boundaries',function(e){
-          
           const { lng, lat } = e_map.current!.getCenter();
           const zoom = e_map.current!.getZoom();
           let composed_string:string = "case '"+ e.features![0].properties!.name_en+"':\nlng="+lng+";\nlat="+lat+";\nzoom="+zoom+";\nbreak;";
