@@ -1,9 +1,9 @@
 import React from 'react'
 import Popup from 'reactjs-popup'
 import { useEffect, useState } from 'react';
-import { City } from '../../types/City';
-import { CostOfLivingData } from '../../types/CostOfLivingData';
-import { Country } from '../../types/Country';
+import { City } from '../../../types/City';
+import { CostOfLivingData } from '../../../types/CostOfLivingData';
+import { Country } from '../../../types/Country';
 
 
 

@@ -1,0 +1,13 @@
+.map-cont{
+height:800px;
+    border-radius: 20px;
+    border: solid #004006;
+    border-width: 3px;
+    margin-left: 5%;
+    margin-top:5%;
+}
+
+.parent_map_div{
+    padding:5%;
+    padding-bottom:0;
+}

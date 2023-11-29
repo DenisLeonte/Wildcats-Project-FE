@@ -3,6 +3,8 @@ import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import "./styles/App.css"
 import CostOfLivingComp from './components/features/CostOfLivingComp/CostOfLivingComp';
 import {ComposableMap, Geographies, Geography} from "react-simple-maps";
+import EuroMap from './components/features/EuroMap/EuroMap';
+import mapboxgl, { LngLatLike } from 'mapbox-gl'
 
 //Asta e o magarie foarte mare, am furat definitia din codul sursa de la fullpage.js ca de altfel nu ma lasa but hey it works
 type Credits = {
@@ -12,7 +14,7 @@ type Credits = {
 }
 
 function App(){
-  const anchors = ["landing","page2","page3"];
+  const anchors = ["landing","map","page3"];
   const interval = 5000;
   const geoUrl = "../assets/features.json"
   var g_interval:NodeJS.Timer;
@@ -89,14 +91,19 @@ function App(){
       <ReactFullpage
         anchors={anchors}
         licenseKey={process.env.REACT_APP_FULLPAGE_LK}
+        navigation
+        navigationTooltips={anchors}
         scrollingSpeed={1000}
         scrollOverflow={true}
         credits={creds}
         gplv3-license={true}
-        parallax={true}
+        cards={true}
         dragAndMove={true}
         autoScrolling={true}
         keyboardScrolling={true}
+        normalScrollElements='.parent_map_div'
+        controlArrows={false}
+        slidesNavigation
         afterLoad={function(origin, destination, direction){
           //responsible for the "auto slide" feature
           clearInterval(g_interval);
@@ -111,7 +118,7 @@ function App(){
           fullpageAPI=fullpageApi
           return(
             <ReactFullpage.Wrapper>
-              <div className="section">
+              <div className="section landing">
                 <div className="slide background slide1 title_font">
                   <div className="title1">The journey not only broadens the mind but enriches the soul.</div>
                 </div>
@@ -127,6 +134,9 @@ function App(){
                 <div className="slide background slide5 title_font">
                   <div className="title5">Every corner of the world<br/> holds a story waiting to be discovered</div>
                 </div>
+              </div>
+              <div className="section map_bg">
+                <EuroMap/>
               </div>
               <div className="section">
                 <CostOfLivingComp/>
