@@ -1,13 +1,37 @@
 .map-cont{
-height:800px;
+    position:absolute;
+    top:10%;
+    left:5%;
+    height:800px;
+    width: 90%;
     border-radius: 20px;
     border: solid #004006;
     border-width: 3px;
-    margin-left: 5%;
-    margin-top:5%;
 }
 
 .parent_map_div{
-    padding:5%;
-    padding-bottom:0;
+    height: 965px;
+    position: relative;
+}
+
+.child_map_div{
+    position: absolute;
+    top: 10%;
+    right: 5%;
+    height: 800px;
+    width: 450px;
+    background-color: white;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }

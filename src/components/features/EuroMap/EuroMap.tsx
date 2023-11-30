@@ -5,15 +5,20 @@ import '../../../styles/EuroMap.css'
 import { log } from 'console';
 import flyToData from './flyToData';
 import fly from './flyToData';
+import { map } from 'leaflet';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
-    const mapContainer = useRef<HTMLDivElement |null>(null);
+  const mapContainer = useRef<HTMLDivElement |null>(null);
+  const [showDiv,setShowDiv] = useState<boolean>(false);
   let e_map = useRef<Map|null>(null);
   const mapCenter:LngLatLike = [10, 45]; // Center of Europe
   const southwest:LngLatLike = [-12,33];
   const northeast:LngLatLike = [30,70];
+  const animatedWidth:number = 1200;
+  const animatedHeight:number = 806;
+  const animationFrames:number=30;
   let selectedCountry:string="";
 
   useEffect(() =>{
@@ -46,6 +51,7 @@ function EuroMap() {
           'country-label'
         );
         e_map.current!.on('click','country-boundaries',function(e){
+          let timer:any;
           const { lng, lat } = e_map.current!.getCenter();
           const zoom = e_map.current!.getZoom();
           let composed_string:string = "case '"+ e.features![0].properties!.name_en+"':\nlng="+lng+";\nlat="+lat+";\nzoom="+zoom+";\nbreak;";
@@ -53,6 +59,14 @@ function EuroMap() {
           selectedCountry = e.features![0].properties!.name_en;
           let flyOpt = fly(selectedCountry);
           e_map.current!.easeTo(flyOpt as FlyToOptions);
+          console.log(mapContainer.current!.offsetWidth,mapContainer.current!.offsetHeight);
+          if(mapContainer.current!.offsetWidth - animatedWidth >= 50){
+            resizeMap(animatedWidth,animatedHeight);
+            timer = setTimeout(() => {
+              setShowDiv(true);
+            }, 1000);
+          }
+          return () => clearTimeout(timer);
         })
         
       })
@@ -60,10 +74,39 @@ function EuroMap() {
     }
   });
 
+
+  function resizeMap(newWidth: number, newHeight: number) {
+    if (e_map.current && mapContainer.current) {
+      const startWidth = mapContainer.current.offsetWidth;
+      const widthStep = (newWidth - startWidth) / animationFrames;
+      let frame = 0;
+  
+      let animate = function() {
+        if (frame < animationFrames) {
+          mapContainer.current!.style.width = `${startWidth + widthStep * frame}px`;
+          
+          // Only call resize every 5 frames
+          if (frame % 3 === 0) {
+            e_map.current!.resize();
+          }
+      
+          frame++;
+          requestAnimationFrame(animate);
+        } else {
+          // Ensure resize is called one final time at the end of the animation
+          e_map.current!.resize();
+        }
+      }
+  
+      animate();
+    }
+  }
+
   return (
     <div>
       <div className="parent_map_div">
         <div ref={mapContainer} id="map-container" className='map-cont'></div>
+        {showDiv && <div className="child_map_div"></div>}
       </div>
     </div>
   );
