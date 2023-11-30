@@ -2,9 +2,7 @@ import React from 'react';
 import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import "./styles/App.css"
 import CostOfLivingComp from './components/features/CostOfLivingComp/CostOfLivingComp';
-import {ComposableMap, Geographies, Geography} from "react-simple-maps";
 import EuroMap from './components/features/EuroMap/EuroMap';
-import mapboxgl, { LngLatLike } from 'mapbox-gl'
 
 //Asta e o magarie foarte mare, am furat definitia din codul sursa de la fullpage.js ca de altfel nu ma lasa but hey it works
 type Credits = {
