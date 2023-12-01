@@ -61,7 +61,7 @@ button{
     width:420px;
     padding:12px;
     top:65%;
-    text-align: left !important; 
+    /* text-align: left !important;  */
 }
 
 .svg_plane{

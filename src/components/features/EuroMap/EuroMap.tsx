@@ -64,12 +64,19 @@ function EuroMap() {
           e_map.current!.easeTo(flyOpt as FlyToOptions);
           console.log(mapContainer.current!.offsetWidth,mapContainer.current!.offsetHeight);
           if(mapContainer.current!.offsetWidth - animatedWidth >= 50){
-            resizeMap(animatedWidth,animatedHeight);
+            // resizeMap(animatedWidth,animatedHeight);
+            document.getElementById("map-container")!.style.width = 'calc(100% - 450px - 2*7%)';
+            document.getElementById("map-container")!.classList.add("reactive");
             timer = setTimeout(() => {
-              setShowDiv(true);
-            }, 1000);
+            setShowDiv(true);
+              let timer1 = setTimeout(() => {
+              (document.querySelector(".div-cont") as HTMLElement)!.style.width = `35%`;
+              }, 50);
+              return () => {clearTimeout(timer1);}
+            }, 100);
+            
           }
-          return () => clearTimeout(timer);
+          return () => {clearTimeout(timer);}
         })
         
       })
@@ -109,7 +116,7 @@ function EuroMap() {
     <div>
       <div className="parent_map_div">
         <div ref={mapContainer} id="map-container" className='map-cont'></div>
-        {showDiv && <CountryBox selectedCountry={country}/>}
+        {showDiv && <div className="div-cont"><CountryBox selectedCountry={country}/></div>}
       </div>
     </div>
   );
