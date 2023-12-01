@@ -6,12 +6,14 @@ import { log } from 'console';
 import flyToData from './flyToData';
 import fly from './flyToData';
 import { map } from 'leaflet';
+import CountryBox from '../CountryBox/CountryBox';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
   const mapContainer = useRef<HTMLDivElement |null>(null);
   const [showDiv,setShowDiv] = useState<boolean>(false);
+  const [country,setCountry] = useState<string>("");
   let e_map = useRef<Map|null>(null);
   const mapCenter:LngLatLike = [10, 45]; // Center of Europe
   const southwest:LngLatLike = [-12,33];
@@ -57,6 +59,7 @@ function EuroMap() {
           let composed_string:string = "case '"+ e.features![0].properties!.name_en+"':\nlng="+lng+";\nlat="+lat+";\nzoom="+zoom+";\nbreak;";
           console.log(composed_string);
           selectedCountry = e.features![0].properties!.name_en;
+          setCountry(selectedCountry);
           let flyOpt = fly(selectedCountry);
           e_map.current!.easeTo(flyOpt as FlyToOptions);
           console.log(mapContainer.current!.offsetWidth,mapContainer.current!.offsetHeight);
@@ -106,7 +109,7 @@ function EuroMap() {
     <div>
       <div className="parent_map_div">
         <div ref={mapContainer} id="map-container" className='map-cont'></div>
-        {showDiv && <div className="child_map_div"></div>}
+        {showDiv && <CountryBox selectedCountry={country}/>}
       </div>
     </div>
   );

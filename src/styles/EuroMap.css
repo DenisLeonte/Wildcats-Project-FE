@@ -14,24 +14,3 @@
     position: relative;
 }
 
-.child_map_div{
-    position: absolute;
-    top: 10%;
-    right: 5%;
-    height: 800px;
-    width: 450px;
-    background-color: white;
-    animation: fadeIn 0.5s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-	0% {
-		opacity: 0;
-		transform: translateX(50px);
-	}
-
-	100% {
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
