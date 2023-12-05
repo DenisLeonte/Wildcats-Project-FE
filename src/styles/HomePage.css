@@ -1,0 +1,238 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.eot");
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.woff") format("woff");
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.svg") format("svg");
+}
+@font-face{
+  font-family: "Italiana";
+  src: url("../../assets/italiana/italiana-regular-webfont.woff") format("woff");
+}
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
+.background{
+  
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size:cover;
+  position:relative;
+}
+
+.slide1{
+  background-position: top center;
+  background-image: url('../../assets/slider_page1.jpeg');
+}
+
+.slide2{
+  background-image: url('../../assets/slider_page2.jpeg');
+}
+
+.slide3{
+  background-position: center 40%;
+  background-image: url("../../assets/slider_page3.jpeg");
+}
+
+.slide4{
+  background-image: url("../../assets/slider_page4.jpeg");
+}
+
+.slide5{
+  background-image: url("../../assets/slider_page5.jpeg");
+}
+
+.popup-content {
+  margin: auto;
+  background: rgb(255, 255, 255);
+  width: 50%;
+  padding: 5px;
+}
+.popup-arrow {
+  color: rgb(255, 255, 255);
+}
+[role='tooltip'].popup-content {
+  width: 200px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-popup='tooltip'].popup-overlay {
+  background: transparent;
+}
+
+.title_font{
+  -webkit-text-stroke-color: white;
+  -webkit-text-stroke-width: 1px;
+  color: #CCC;
+  text-align: center;
+  font-family: Lusitana;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.title1{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:370px;
+  padding-left:60px;
+  padding-bottom:40px;
+}
+
+.title2{
+  position:absolute;
+  left:0;
+  top:40%;
+  width: 400px;
+  padding-left: 80px
+}
+
+.title3{
+  position:absolute;
+  left:0;
+  top:40%;
+  width: 600px;
+  padding-left: 80px
+}
+
+.title4{
+  position:absolute;
+  left:4%;
+  top:10%;
+}
+
+.title5{
+  position:absolute;
+  bottom: 0;
+  left: 0;
+  padding-left:60px;
+  padding-bottom:40px;
+}
+
+.app{
+  position:relative;
+}
+
+.navbar{
+  display: flex;
+  position:absolute;
+  top:0;
+  z-index:5;
+  overflow:hidden;
+  height: 11%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.back_icon{
+  padding:18px 14px;
+}
+
+.logo_icon{
+  padding:22px 10px;
+}
+
+.nav_button{
+  text-align: center;
+  padding:22px 50px;
+}
+
+input{    
+  height:16px;
+  display: flex;
+  width: 510px;
+  padding: 16px;
+  margin-left:150px;
+  align-items: center;
+  gap: 10px; 
+  border-radius: 4px;
+  background: url("../../assets/Icon\ pack.svg") 97% 50% no-repeat;
+  background-color:white;
+  color: var(--Grey-input-text, #ABABAB);
+  /* Text */
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border:0;
+  margin-right:auto;
+}
+
+.sign_in_but{
+  color: var(--VerdeScris, #004006);
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  background-color: #FFF;
+  border:#004006 solid;
+  border-radius: 4px;
+  border-width: 2px;
+  display: flex;
+  height: 56px;
+  padding: 0 30px;
+  margin-left: min(auto, 20px);
+  align-items: center;
+  justify-content: center;
+}
+
+.sign_up_but{
+  display: flex;
+  height: 56px;
+  padding: 0 30px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: var(--VerdeScris, #004006);
+  color: var(--White-background, #FFF);
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  margin-left:20px;
+  margin-right:50px;
+}
+
+.fp-slidesNav{
+  padding-left: 47%;
+}
+
+ul li a span, .fp-slidesNav ul li a span{
+  background: #FFF;
+}
+
+.map_bg{
+  background-color: #B2C8BA;
+}

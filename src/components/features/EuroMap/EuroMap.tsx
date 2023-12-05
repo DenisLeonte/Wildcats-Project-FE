@@ -65,7 +65,7 @@ function EuroMap() {
             
             document.getElementById("map-container")!.style.width = 'calc(100% - 450px - 2*7%)';
             document.getElementById("map-container")!.classList.add("reactive");
-            resizeMap(parseInt(document.getElementById("map-container")!.style.width));
+            // resizeMap(parseInt(document.getElementById("map-container")!.style.width));
             timer = setTimeout(() => {
             setShowDiv(true);
               let timer1 = setTimeout(() => {
