@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl, { CameraOptions, FillLayout, FilterOptions, FlyToOptions, LngLatLike, Map } from 'mapbox-gl'
 import '../../../styles/EuroMap.css'
@@ -19,7 +18,6 @@ function EuroMap() {
   const southwest:LngLatLike = [-12,33];
   const northeast:LngLatLike = [30,70];
   const animatedWidth:number = 1200;
-  const animatedHeight:number = 806;
   const animationFrames:number=30;
   let selectedCountry:string="";
 
@@ -52,21 +50,22 @@ function EuroMap() {
           },
           'country-label'
         );
+        
+        document.getElementsByClassName("mapboxgl-ctrl-attrib-inner")[0].remove();
+        document.getElementsByClassName("mapboxgl-ctrl")[0].remove();
         e_map.current!.on('click','country-boundaries',function(e){
           let timer:any;
-          const { lng, lat } = e_map.current!.getCenter();
-          const zoom = e_map.current!.getZoom();
-          let composed_string:string = "case '"+ e.features![0].properties!.name_en+"':\nlng="+lng+";\nlat="+lat+";\nzoom="+zoom+";\nbreak;";
-          console.log(composed_string);
+          getPosZoom(e);
           selectedCountry = e.features![0].properties!.name_en;
           setCountry(selectedCountry);
           let flyOpt = fly(selectedCountry);
           e_map.current!.easeTo(flyOpt as FlyToOptions);
           console.log(mapContainer.current!.offsetWidth,mapContainer.current!.offsetHeight);
           if(mapContainer.current!.offsetWidth - animatedWidth >= 50){
-            // resizeMap(animatedWidth,animatedHeight);
+            
             document.getElementById("map-container")!.style.width = 'calc(100% - 450px - 2*7%)';
             document.getElementById("map-container")!.classList.add("reactive");
+            resizeMap(parseInt(document.getElementById("map-container")!.style.width));
             timer = setTimeout(() => {
             setShowDiv(true);
               let timer1 = setTimeout(() => {
@@ -74,7 +73,6 @@ function EuroMap() {
               }, 50);
               return () => {clearTimeout(timer1);}
             }, 100);
-            
           }
           return () => {clearTimeout(timer);}
         })
@@ -84,8 +82,14 @@ function EuroMap() {
     }
   });
 
+  function getPosZoom(e:mapboxgl.MapMouseEvent & mapboxgl.EventData){
+    const { lng, lat } = e_map.current!.getCenter();
+    const zoom = e_map.current!.getZoom();
+    let composed_string:string = "case '"+ e.features![0].properties!.name_en+"':\nlng="+lng+";\nlat="+lat+";\nzoom="+zoom+";\nbreak;";
+    console.log(composed_string);
+  }
 
-  function resizeMap(newWidth: number, newHeight: number) {
+  function resizeMap(newWidth: number) {
     if (e_map.current && mapContainer.current) {
       const startWidth = mapContainer.current.offsetWidth;
       const widthStep = (newWidth - startWidth) / animationFrames;

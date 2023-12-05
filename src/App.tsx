@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import "./styles/App.css"
 import CostOfLivingComp from './components/features/CostOfLivingComp/CostOfLivingComp';
@@ -24,6 +24,11 @@ function App(){
     label:"made possible by fullPage.js",
     position:"right"
   }
+
+  useEffect(() => {
+    document.getElementsByClassName("fp-watermark")[0].remove();
+  },[]);
+
   return (
     <div className="app">
       <div className="navbar">
@@ -137,9 +142,6 @@ function App(){
               </div>
               <div className="section map_bg">
                 <EuroMap/>
-              </div>
-              <div className="section">
-                <CostOfLivingComp/>
               </div>
             </ReactFullpage.Wrapper>
           )

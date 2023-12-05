@@ -200,7 +200,7 @@ input{
   display: flex;
   height: 56px;
   padding: 0 30px;
-  margin-left: auto;
+  margin-left: min(auto, 20px);
   align-items: center;
   justify-content: center;
 }
