@@ -2,7 +2,7 @@
 
 # Waiting for app to start on localhost:3000
 
-exec npm start &
+exec npm start -- --polling&
 
 echo "Waiting for app to start on localhost:3000..."
 while ! nc -z localhost 3000; do

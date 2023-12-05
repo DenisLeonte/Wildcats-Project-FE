@@ -4,9 +4,12 @@
   src: url("../../assets/inter/inter-variablefont_slntwght-webfont.eot");
   src: url("../../assets/inter/inter-variablefont_slntwght-webfont.woff") format("woff");
   src: url("../../assets/inter/inter-variablefont_slntwght-webfont.svg") format("svg");
-  
-
 }
+@font-face{
+  font-family: "Italiana";
+  src: url("../../assets/italiana/italiana-regular-webfont.woff") format("woff");
+}
+
 .popup-content {
   margin: auto;
   background: rgb(255, 255, 255);
@@ -197,7 +200,7 @@ input{
   display: flex;
   height: 56px;
   padding: 0 30px;
-  margin-left: auto;
+  margin-left: min(auto, 20px);
   align-items: center;
   justify-content: center;
 }
