@@ -18,7 +18,7 @@ function EuroMap() {
   const southwest:LngLatLike = [-12,33];
   const northeast:LngLatLike = [30,70];
   const animatedWidth:number = 1200;
-  const animationFrames:number=30;
+  const animationFrames:number=1;
   let selectedCountry:string="";
 
   useEffect(() =>{
@@ -55,6 +55,7 @@ function EuroMap() {
         document.getElementsByClassName("mapboxgl-ctrl")[0].remove();
         e_map.current!.on('click','country-boundaries',function(e){
           let timer:any;
+          let timer2:any;
           getPosZoom(e);
           selectedCountry = e.features![0].properties!.name_en;
           setCountry(selectedCountry);
@@ -65,7 +66,9 @@ function EuroMap() {
             
             document.getElementById("map-container")!.style.width = 'calc(100% - 450px - 2*7%)';
             document.getElementById("map-container")!.classList.add("reactive");
-            // resizeMap(parseInt(document.getElementById("map-container")!.style.width));
+            timer = setTimeout(() => {
+              resizeMap(parseInt(document.getElementById("map-container")!.style.width));
+            },500)
             timer = setTimeout(() => {
             setShowDiv(true);
               let timer1 = setTimeout(() => {

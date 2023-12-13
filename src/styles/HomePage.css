@@ -1,14 +1,4 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
-@font-face {
-  font-family: "Inter";
-  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.eot");
-  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.woff") format("woff");
-  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.svg") format("svg");
-}
-@font-face{
-  font-family: "Italiana";
-  src: url("../../assets/italiana/italiana-regular-webfont.woff") format("woff");
-}
+@import "fonts.css";
 
 .popup-content {
   margin: auto;
