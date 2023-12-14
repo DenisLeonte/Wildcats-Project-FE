@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import mapboxgl, { CameraOptions, FillLayout, FilterOptions, FlyToOptions, LngLatLike, Map } from 'mapbox-gl'
 import '../../../styles/EuroMap.css'
 import { log } from 'console';
@@ -6,10 +6,12 @@ import flyToData from './flyToData';
 import fly from './flyToData';
 import { map } from 'leaflet';
 import CountryBox from '../CountryBox/CountryBox';
+import { PageManager } from '../../../PageManager';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
+  const {page, setPage} = useContext(PageManager);
   const mapContainer = useRef<HTMLDivElement |null>(null);
   const [showDiv,setShowDiv] = useState<boolean>(false);
   const [country,setCountry] = useState<string>("");
@@ -23,7 +25,7 @@ function EuroMap() {
 
   useEffect(() =>{
     const enabled:string = process.env.REACT_APP_MAPBOX_ENABLED!;
-    if(enabled === "true"){
+    if(enabled === "true" && page == "home"){
       if(e_map.current) return;
       e_map.current = new mapboxgl.Map({
         container: 'map-container',
@@ -51,8 +53,14 @@ function EuroMap() {
           'country-label'
         );
         
+        try{
         document.getElementsByClassName("mapboxgl-ctrl-attrib-inner")[0].remove();
         document.getElementsByClassName("mapboxgl-ctrl")[0].remove();
+        }catch(e){
+          console.log(e);
+        }
+
+
         e_map.current!.on('click','country-boundaries',function(e){
           let timer:any;
           let timer2:any;
