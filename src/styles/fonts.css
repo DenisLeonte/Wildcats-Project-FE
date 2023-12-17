@@ -1,0 +1,20 @@
+@font-face{
+    font-family: "Italiana";
+    src: url("../../assets/italiana/italiana-regular-webfont.eot");
+    src: url("../../assets/italiana/italiana-regular-webfont.woff") format("woff");
+    src: url("../../assets/italiana/italiana-regular-webfont.svg") format("svg");
+  }
+  
+@font-face{
+    font-family: "Playfair Display";
+    src: url("../../assets/playfair/playfairdisplay-variablefont_wght-webfont.eot");
+    src: url("../../assets/playfair/playfairdisplay-variablefont_wght-webfont.woff") format("woff");
+    src: url("../../assets/playfair/playfairdisplay-variablefont_wght-webfont.svg") format("svg");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.eot");
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.woff") format("woff");
+  src: url("../../assets/inter/inter-variablefont_slntwght-webfont.svg") format("svg");
+}

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import mapboxgl, { CameraOptions, FillLayout, FilterOptions, FlyToOptions, LngLatLike, Map } from 'mapbox-gl'
 import '../../../styles/EuroMap.css'
 import { log } from 'console';
@@ -6,10 +6,12 @@ import flyToData from './flyToData';
 import fly from './flyToData';
 import { map } from 'leaflet';
 import CountryBox from '../CountryBox/CountryBox';
+import { PageManager } from '../../../PageManager';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
+  const {page, setPage} = useContext(PageManager);
   const mapContainer = useRef<HTMLDivElement |null>(null);
   const [showDiv,setShowDiv] = useState<boolean>(false);
   const [country,setCountry] = useState<string>("");
@@ -18,12 +20,12 @@ function EuroMap() {
   const southwest:LngLatLike = [-12,33];
   const northeast:LngLatLike = [30,70];
   const animatedWidth:number = 1200;
-  const animationFrames:number=30;
+  const animationFrames:number=1;
   let selectedCountry:string="";
 
   useEffect(() =>{
     const enabled:string = process.env.REACT_APP_MAPBOX_ENABLED!;
-    if(enabled === "true"){
+    if(enabled === "true" && page == "home"){
       if(e_map.current) return;
       e_map.current = new mapboxgl.Map({
         container: 'map-container',
@@ -51,10 +53,17 @@ function EuroMap() {
           'country-label'
         );
         
+        try{
         document.getElementsByClassName("mapboxgl-ctrl-attrib-inner")[0].remove();
         document.getElementsByClassName("mapboxgl-ctrl")[0].remove();
+        }catch(e){
+          console.log(e);
+        }
+
+
         e_map.current!.on('click','country-boundaries',function(e){
           let timer:any;
+          let timer2:any;
           getPosZoom(e);
           selectedCountry = e.features![0].properties!.name_en;
           setCountry(selectedCountry);
@@ -65,7 +74,9 @@ function EuroMap() {
             
             document.getElementById("map-container")!.style.width = 'calc(100% - 450px - 2*7%)';
             document.getElementById("map-container")!.classList.add("reactive");
-            //resizeMap(parseInt(document.getElementById("map-container")!.style.width));
+            timer = setTimeout(() => {
+              resizeMap(parseInt(document.getElementById("map-container")!.style.width));
+            },500)
             timer = setTimeout(() => {
             setShowDiv(true);
               let timer1 = setTimeout(() => {
