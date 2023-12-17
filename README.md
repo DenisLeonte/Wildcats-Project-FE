@@ -14,6 +14,7 @@ Main contributors to this code:
 ### Prerequisites:
 - ```node 21.1.0```
 - ```npm```
+- ```.env``` file. Please make one like ```.env.example``` and ask Denis for the real data, otherwise the app wont start.
 
 ### Run with Docker
 
