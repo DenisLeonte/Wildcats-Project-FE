@@ -7,7 +7,6 @@
     background-attachment: fixed;
     background-size:135%;
     position:relative;
-    
 }
 
 .searchBar{
@@ -32,7 +31,7 @@
   border: 1px solid var(--text-dark-light, #9D9D9D);
   color: var(--text-dark-light, #9D9D9D);
   background: var(--interactive-hovered, #F2F2F2);
-  height:20;
+  height:35px !important;
   padding:8px;
   font-family: Inter;
   font-size:14px;
@@ -50,6 +49,7 @@
   padding: 0 !important;
   height: 35px !important
 }
+
 
 .origin{
   flex-grow:1;
@@ -116,5 +116,90 @@
 }
 
 .calendar_pick{
-  display:inline-flex !important;
+  all:initial;
+}
+
+.passengerNum{
+  padding:0px !important;
+  padding-left:10px !important;
+  position:relative;
+  width:165px;
+}
+
+.passengerPickContent{
+  height:35px !important;
+  position:absolute;
+  top:0;
+  width:100%;
+}
+
+.boldText{
+  color: var(--text-dark-light, #9D9D9D);
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin:0px;
+  margin-top:5px;
+}
+
+.smallText{
+  color: var(--text-dark-light, #9D9D9D);
+  font-family: Inter;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin:0px;
+}
+
+.passengerPickIcon{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+}
+
+.passengerArrows{
+  height:100%;
+  width:20px;
+  display:flex;
+  flex-direction: column;
+  position:absolute;
+  right:0;
+  top:5%;
+  transform: translateX(-100%);
+}
+
+.PassBut{
+  border:0;
+  font-weight: bold;
+  font-size: medium;
+  background-color: transparent;
+  height:15px;
+  color:#9D9D9D
+}
+
+.searchButt{
+  padding:0px !important;
+}
+
+.searchButton{
+  height:100%;
+  width:200px;
+  border:0;
+  border-radius:inherit;
+  text-align: left;
+  color: var(--text-dark-light, #9D9D9D);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.searchButton:hover{
+  color:black;
+  background-color: white;
+}
+
+.searchIcon {
+  fill: black;
 }
