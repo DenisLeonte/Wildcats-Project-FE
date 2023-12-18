@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import "../../../styles/HomePage.css";
-import CostOfLivingComp from '../CostOfLivingComp/CostOfLivingComp';
-import {ComposableMap, Geographies, Geography} from "react-simple-maps";
 import EuroMap from '../EuroMap/EuroMap';
-import mapboxgl, { LngLatLike } from 'mapbox-gl'
 
 //Asta e o magarie foarte mare, am furat definitia din codul sursa de la fullpage.js ca de altfel nu ma lasa but hey it works
 type Credits = {
@@ -83,7 +80,7 @@ function HomePage(){
           </div>
         </a>
         {/* SEARCH BAR */}
-        <input type='text' placeholder='Search'></input>
+        <input type='text' placeholder='Search' className="search_bar"></input>
         {/* SIGN IN */}
         <a>
           <div className="nav_button sign_in_but">Sign In</div>

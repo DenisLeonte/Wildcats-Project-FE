@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import { PageManager } from '../../../PageManager';
 import HomePage from './HomePage';
+import { useGlobalContext } from '../../../PageManager';
 
 const HomeComponentWrapper: React.FC = () => {
-    const {page,setPage} = useContext(PageManager);
+    const {page, updatePage} = useGlobalContext();
 
     return (
         <div>
