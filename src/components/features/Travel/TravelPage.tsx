@@ -2,6 +2,7 @@ import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import React, { useEffect, useState } from 'react';
 import '../../../styles/TravelPage.css';
 import { DatePicker, Space } from 'antd';
+import Footer from '../Footer/Footer';
 
 
 type Credits = {
@@ -70,10 +71,23 @@ const TravelPage: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="section offers">
+                            <div className="section offers ">
                                 <p>OFFERS PAGE</p>
+                                <div className="footerTravel">
+                                    <Footer></Footer>
+                                    
+    
+                            
+                                    
+                                </div>
+                                
+                                
+                                
                             </div>
+
+                            
                         </ReactFullpage.Wrapper>
+                        
                     )
                 }}
             ></ReactFullpage>
