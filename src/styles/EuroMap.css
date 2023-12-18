@@ -1,0 +1,30 @@
+.map-cont{
+    position:absolute;
+    top:15%;
+    left:5%;
+    height:750px;
+    width: 90%;
+    border-radius: 20px;
+    border: solid #004006;
+    border-width: 3px;
+    transition: width 0.5s ease;
+}
+
+.parent_map_div{
+    height: 965px;
+    position: relative;
+    display:flex;
+    padding:5%;
+    padding-top:0%;
+    padding-bottom:0%;
+}
+
+.responsive{
+    width:calc(100% - 450px - 2*5%) !important;
+}
+
+.div-cont{
+    width:450px;
+    transition:width 0.5s ease;
+    overflow: hidden;
+}

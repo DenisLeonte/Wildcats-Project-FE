@@ -1,0 +1,86 @@
+@import "fonts.css";
+
+.box{
+    position: absolute;
+    top: 25%;
+    right: 5%;
+    height: 480px;
+    width: 430px;
+    background-color: white;
+    animation: fadeIn 0.5s ease-in-out forwards;
+    border-radius: 0 0 20px 20px;
+    border: 3px solid var(--VerdeScris, #004006);
+    background: var(--AlbastruInchis, #2C5B69);
+
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateX(50px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+.innerBox{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+button{
+    position:absolute;
+    border-radius: 20px;
+    border: 2px solid var(--VerdeScris, #004006);
+    background: var(--AlbastruDeschis, #7DA6B2);
+    color: var(--VerdeScris, #004006);
+    text-align: center;
+    font-family: Italiana;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.button2{
+    width:400px;
+    padding:12px;
+    padding-left: 20px !important;
+    top:35%;
+}
+
+.button3{
+    width:400px;
+    padding:12px;
+    top:65%;
+    /* text-align: left !important;  */
+}
+
+.svg_plane{
+    position: absolute;
+    right:3%;
+    top:50%;
+    transform:translateY(-50%);
+}
+
+.countryNameTitle{
+    text-align: center;
+    color: #FFF;
+    text-align: center;
+    font-family: Playfair Display;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100px;
+    border-bottom: 2px solid var(--VerdeScris, #004006);
+    height: 100px;
+        
+    justify-content: center;
+    align-items: center;
+}
