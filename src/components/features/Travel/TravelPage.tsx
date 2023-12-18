@@ -55,7 +55,7 @@ const TravelPage: React.FC = () => {
                     fullpageAPI=fullpageApi
                     return (
                         <ReactFullpage.Wrapper>
-                            <div className="section landing background">
+                            <div className="section landing backgroundTravel">
                                 <div className="searchBar">
                                     <div className="searchBox originDest">
                                         <div className="origin">
@@ -66,12 +66,9 @@ const TravelPage: React.FC = () => {
                                         </div>
                                     </div>
                                     <div className="searchBox calendar_pick">
-                                        <Space>
-                                            <RangePicker />
-                                        </Space>
+                                        <RangePicker/>
                                     </div>
                                 </div>
-                                
                             </div>
                             <div className="section offers">
                                 <p>OFFERS PAGE</p>
