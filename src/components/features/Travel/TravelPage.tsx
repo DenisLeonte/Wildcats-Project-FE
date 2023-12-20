@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import '../../../styles/TravelPage.css';
 import { DatePicker, Space } from 'antd';
 import Footer from '../Footer/Footer';
+import Navbar from '../Navbar/Navbar';
 
 
 type Credits = {
@@ -48,6 +49,7 @@ const TravelPage: React.FC = () => {
     return (
         <div className="travelPage">
             <div className="landing backgroundTravel">
+                <Navbar/>
                 <div className="searchBar">
                     <div className="searchBox originDest">
                         <div className="origin">

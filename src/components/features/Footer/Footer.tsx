@@ -2,10 +2,6 @@ import "../../../styles/Footer.css"
 
 function Footer(){
 
-
-
-
-
     return(
         <div className="footer">
             <div className="footer ">
@@ -32,8 +28,6 @@ function Footer(){
         >Upgrade Premium
         </button>
       </div>
-      
-
             </div>
         </div>    
             )
