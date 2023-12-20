@@ -1,10 +1,39 @@
 @import "fonts.css";
+body{
+  margin:0;
+  overflow-x:hidden;
+  overflow-y: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.travelPage{
+  display:flex;
+  flex-direction: column;
+  gap:0;
+  width:100vw;
+  height:200vh;
+}
+
+.travelPage .landing{
+  height:100vh;
+  width:100%;
+}
+
+.travelPage .offers{
+  height:100vh;
+  width: 100%;
+}
 
 .backgroundTravel{
     background-image: url('../../assets/travel_page.jpeg');
     background-position: center center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: scroll;
     background-size:135%;
     position:relative;
 }
