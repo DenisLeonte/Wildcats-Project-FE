@@ -91,7 +91,10 @@ const TravelPage: React.FC = () => {
                 </div>
             </div>
             <div className="offers">
-                <p>OFFERS PAGE</p>
+                <div className="offerWrapper">
+                    <p style ={{margin:0}}>OFFERS PAGE</p>
+                    <Footer/>
+                </div>
             </div>
         </div>
     );

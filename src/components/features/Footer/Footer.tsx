@@ -7,7 +7,7 @@ function Footer(){
 
 
     return(
-        <div>
+        <div className="footer">
             <div className="footer ">
             <svg xmlns="http://www.w3.org/2000/svg" width="167" height="13" viewBox="0 0 167 13" fill="none" className={"logo_icon"}>
           <path d="M157.089 2.13069V0.363647H166.374V2.13069H162.777V12H160.686V2.13069H157.089Z" fill="#004006"/>

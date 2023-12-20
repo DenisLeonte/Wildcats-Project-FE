@@ -13,7 +13,7 @@ const initialContext: GlobalContextProps = {
 const GlobalContext = createContext<GlobalContextProps>(initialContext);
 
 export const GlobalProvider = ({children}: {children: React.ReactNode}) =>{
-  const [page, setPage] = useState("home");
+  const [page, setPage] = useState("travel");
   const updatePage = (new_page:string) =>{
     setPage(new_page);
   };

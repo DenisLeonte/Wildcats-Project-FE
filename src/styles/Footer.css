@@ -6,6 +6,7 @@ background-color: #C6C9C7;
 width: 100%;
 height: 115px;
 position: absolute;
+bottom:0;
 }
 
 .buttonFooter{

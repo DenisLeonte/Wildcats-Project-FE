@@ -265,3 +265,10 @@ body::-webkit-scrollbar {
   left:35%;
   transform: translate(-50%, -50%);
 }
+
+
+.offerWrapper{
+  position:relative;
+  width: 100%;
+  height: 100%;
+}
