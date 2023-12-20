@@ -2,6 +2,7 @@ import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import React, { useEffect, useState } from 'react';
 import '../../../styles/TravelPage.css';
 import { DatePicker, Space } from 'antd';
+import Footer from '../Footer/Footer';
 
 
 type Credits = {
