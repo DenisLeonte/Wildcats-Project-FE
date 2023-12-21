@@ -25,13 +25,13 @@ function HomePage(){
 
   useEffect(() => {
     document.getElementsByClassName("fp-watermark")[0].remove();
+    window.location.href="#home";
   },[]);
 
   return (
     <div className="app">
       <Navbar></Navbar>
       <ReactFullpage
-        anchors={anchors}
         licenseKey={process.env.REACT_APP_FULLPAGE_LK}
         navigation
         navigationTooltips={anchors}

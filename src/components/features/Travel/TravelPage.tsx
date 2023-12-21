@@ -1,50 +1,80 @@
-import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import React, { useEffect, useState } from 'react';
 import '../../../styles/TravelPage.css';
 import { DatePicker, Space } from 'antd';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
+import dayjs from 'dayjs';
+import { set } from 'date-fns';
 
-
-type Credits = {
-    enabled?: boolean,
-    label?: string,
-    position?: "left" | "right"
-  }
 
 const TravelPage: React.FC = () => {
-    const anchors = ["travel","offers"];
-    var fullpageAPI:fullpageApi;
-    const creds:Credits = {
-        enabled:true,
-        label:"made possible by fullPage.js",
-        position:"right"
-      }
-    const selectionRange = {
-        startDate: new Date(),
-        endDate: new Date(),
-        key: 'selection',
-    }
     const { RangePicker } = DatePicker;
     const [passNo,setPassNo] = useState(1);
+    const [origin, setOrigin] = useState("");
+    const [destination, setDestination] = useState("");
+    const [sDate, setSdate] = useState(dayjs());
+    const [eDate, setEdate] = useState(dayjs());
+    const [validInput, setValidInput] = useState(false);
+
+    var eDateSel = false;
+    var sDateSel = false;
+
 
     function setValue(value:number){
         if(value >= 1){
             setPassNo(value);
         }
     }
+    
+    const handleDateChange = (dates:any, dateStrings:any) => {
+        if(dates[0] != null && dates[1] != null){
+        setSdate(dayjs(dates[0]));
+        setEdate(dayjs(dates[1]));
+        eDateSel = true;
+        sDateSel = true;
+        console.log(sDate);
+        console.log(eDate);
+        checkInputs();
+    }else{
+        eDateSel = false;
+        sDateSel = false;
+        checkInputs();
+    }
+    };
+
+    function checkInputs(){
+        if(origin != "" && destination != "" && origin != destination && eDateSel && sDateSel){
+            setValidInput(true);
+        }
+        else{
+            setValidInput(false);
+        }
+
+    }
+
+    function handleSearchClick(){
+        if(validInput){
+            console.log("Search clicked");
+            console.log(origin);
+            console.log(destination);
+            console.log(sDate);
+            console.log(eDate);
+        }
+    }
+
+    function handleOriginInput(e:any){
+        setOrigin(e.target.value);
+        checkInputs();
+    }
+
+    function handleDestInput(e:any){
+        setDestination(e.target.value);
+        checkInputs();
+    }
 
     useEffect(() => {
-        try{
-        document.getElementsByClassName("fp-watermark")[0].remove();
-        }catch(e){
-            console.log(e);
-        }
+        window.location.href="#travel";
       },[]);
-
-    function handleDateSelect(ranges:any){
-        console.log(ranges);
-    }
 
     return (
         <div className="travelPage">
@@ -53,15 +83,17 @@ const TravelPage: React.FC = () => {
                 <div className="searchBar">
                     <div className="searchBox originDest">
                         <div className="origin">
-                            <input type="text" placeholder="Origin" className="origin_input"/>
+                            // TODO: FIX THIS
+                            <input type="text" placeholder="Origin" className="origin_input" value={origin} onChange={handleOriginInput}/>
                         </div>
                         <div className="dest">
-                            <input type="text" placeholder="Destination" className="origin_input"/>
+                            // TODO: FIX THIS
+                            <input type="text" placeholder="Destination" className="origin_input" value={destination} onChange={handleDestInput}/>
                         </div>
                     </div>
                     <div className="calendar_pick">
                         <div className="searchBox" style={{padding:"0px"}}>
-                            <RangePicker bordered={false}/>
+                            <RangePicker bordered={false} onChange={handleDateChange}/>
                         </div>
                         
                     </div>
@@ -83,9 +115,9 @@ const TravelPage: React.FC = () => {
                         </div>
                     </div>
                     <div className="searchBox searchButt">
-                        <button className="searchButton">
+                        <button className={`searchButton ${!validInput?'disable_animation':''}`} onClick={handleSearchClick} disabled={validInput}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" className='searchIcon'>
-                                <path d="M10.5033 9.50338H9.97659L9.78992 9.32338C10.4433 8.56338 10.8366 7.57671 10.8366 6.50338C10.8366 4.11004 8.89659 2.17004 6.50326 2.17004C4.10992 2.17004 2.16992 4.11004 2.16992 6.50338C2.16992 8.89671 4.10992 10.8367 6.50326 10.8367C7.57659 10.8367 8.56326 10.4434 9.32326 9.79004L9.50326 9.97671V10.5034L12.8366 13.83L13.8299 12.8367L10.5033 9.50338ZM6.50326 9.50338C4.84326 9.50338 3.50326 8.16338 3.50326 6.50338C3.50326 4.84338 4.84326 3.50338 6.50326 3.50338C8.16326 3.50338 9.50326 4.84338 9.50326 6.50338C9.50326 8.16338 8.16326 9.50338 6.50326 9.50338Z" fill="#9D9D9D"/>
+                                <path d="M10.5033 9.50338H9.97659L9.78992 9.32338C10.4433 8.56338 10.8366 7.57671 10.8366 6.50338C10.8366 4.11004 8.89659 2.17004 6.50326 2.17004C4.10992 2.17004 2.16992 4.11004 2.16992 6.50338C2.16992 8.89671 4.10992 10.8367 6.50326 10.8367C7.57659 10.8367 8.56326 10.4434 9.32326 9.79004L9.50326 9.97671V10.5034L12.8366 13.83L13.8299 12.8367L10.5033 9.50338ZM6.50326 9.50338C4.84326 9.50338 3.50326 8.16338 3.50326 6.50338C3.50326 4.84338 4.84326 3.50338 6.50326 3.50338C8.16326 3.50338 9.50326 4.84338 9.50326 6.50338C9.50326 8.16338 8.16326 9.50338 6.50326 9.50338Z" fill="black"/>
                             </svg>
                             <p>Search</p>
                         </button>

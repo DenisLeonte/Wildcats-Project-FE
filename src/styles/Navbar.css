@@ -13,17 +13,20 @@
   }
 
 .back_icon{
-padding:18px 14px;
+margin:18px 14px;
+cursor: pointer;
 }
 
 
 .logo_icon{
-padding:22px 10px;
+margin:22px 10px;
+cursor: pointer;
 }
 
 .nav_button{
 text-align: center;
-padding:22px 50px;
+margin:22px 50px;
+cursor: pointer;
 }
 
 .search_bar{    
@@ -66,6 +69,7 @@ padding: 0 30px;
 margin-left: min(auto, 20px);
 align-items: center;
 justify-content: center;
+cursor: pointer;
 }
 
 .sign_up_but{
@@ -86,6 +90,7 @@ font-weight: bold;
 line-height: normal;
 margin-left:20px;
 margin-right:50px;
+cursor: pointer;
 }
 
 .travelPage .logo_icon path{

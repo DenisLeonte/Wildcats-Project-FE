@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import '../../../styles/CountryBox.css';
-import { useGlobalContext } from '../../../PageManager';
+import { usePageContext } from "../../../contexts/PageContext/PageManager";
 
 interface CountryBoxProps {
     selectedCountry: string;
@@ -9,7 +9,7 @@ interface CountryBoxProps {
 
 function CountryBox({ selectedCountry }: CountryBoxProps) {
 
-    const {page, updatePage} = useGlobalContext();
+    const {page, updatePage} = usePageContext();
     function switchPage(){
         updatePage("travel");
         window.location.href = "/#travel";

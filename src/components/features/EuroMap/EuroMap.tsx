@@ -6,12 +6,12 @@ import flyToData from './flyToData';
 import fly from './flyToData';
 import { map } from 'leaflet';
 import CountryBox from '../CountryBox/CountryBox';
-import { useGlobalContext } from '../../../PageManager';
+import { usePageContext } from "../../../contexts/PageContext/PageManager";
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
-  const {page, updatePage} = useGlobalContext();
+  const {page, updatePage} = usePageContext();
   const mapContainer = useRef<HTMLDivElement |null>(null);
   const [showDiv,setShowDiv] = useState<boolean>(false);
   const [country,setCountry] = useState<string>("");

@@ -83,10 +83,14 @@ body::-webkit-scrollbar {
 
 .origin{
   flex-grow:1;
+  width:100%;
+  height:100%;
   border-right: 1px var(--text-dark-light, #9D9D9D) dashed;
 }
 
 .dest{
+  width:100%;
+  height:100%;
   flex-grow:1;
 }
 
@@ -233,7 +237,8 @@ body::-webkit-scrollbar {
   border:0;
   border-radius:inherit;
   text-align: left;
-  color: var(--text-dark-light, #9D9D9D);
+  color: black;
+  background-color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
   position:relative;
 }
@@ -244,12 +249,24 @@ body::-webkit-scrollbar {
   top:50%;
   left:50%;
   transform: translate(-50%, -50%);
-
 }
 
-.searchButton:hover{
-  color:black;
-  background-color: white;
+.searchButton svg{
+  opacity: 0;
+  transition:opacity 0.3s ease;
+}
+
+.searchButton p{
+  opacity: 1;
+  transition:opacity 0.3s ease;
+}
+
+.searchButton:hover svg{
+  opacity: 1;
+}
+
+.searchButton:hover p{
+  opacity: 0;
 }
 
 .searchButton:active {
@@ -262,7 +279,7 @@ body::-webkit-scrollbar {
   margin-right: 5px;
   position:absolute;
   top:50%;
-  left:35%;
+  left:50%;
   transform: translate(-50%, -50%);
 }
 
@@ -271,4 +288,22 @@ body::-webkit-scrollbar {
   position:relative;
   width: 100%;
   height: 100%;
+}
+
+.disable_animation,
+.disable_animation p,
+.disable_animation svg {
+    transition: none !important;
+    background-color: #F2F2F2;
+    color:#9D9D9D
+}
+
+.disable_animation:hover p,
+.disable_animation:hover svg {
+    opacity: inherit !important;
+}
+
+.disable_animation:active {
+  transition:none !important;
+  transform:scale(1) !important;
 }
