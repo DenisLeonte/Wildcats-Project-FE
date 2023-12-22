@@ -10,11 +10,13 @@ import { set } from 'date-fns';
 const TravelPage: React.FC = () => {
     const { RangePicker } = DatePicker;
     const [passNo,setPassNo] = useState(1);
-    const [origin, setOrigin] = useState("");
-    const [destination, setDestination] = useState("");
+    const [originCity, setoriginCity] = useState("");
+    const [destinationCity, setdestinationCity] = useState("");
     const [sDate, setSdate] = useState(dayjs());
     const [eDate, setEdate] = useState(dayjs());
     const [validInput, setValidInput] = useState(false);
+    
+
 
     var eDateSel = false;
     var sDateSel = false;
@@ -34,16 +36,14 @@ const TravelPage: React.FC = () => {
         sDateSel = true;
         console.log(sDate);
         console.log(eDate);
-        checkInputs();
     }else{
         eDateSel = false;
         sDateSel = false;
-        checkInputs();
     }
     };
 
     function checkInputs(){
-        if(origin != "" && destination != "" && origin != destination && eDateSel && sDateSel){
+        if(originCity != "" && destinationCity != "" && originCity != destinationCity && eDate && sDate){
             setValidInput(true);
         }
         else{
@@ -55,26 +55,28 @@ const TravelPage: React.FC = () => {
     function handleSearchClick(){
         if(validInput){
             console.log("Search clicked");
-            console.log(origin);
-            console.log(destination);
+            console.log(originCity);
+            console.log(destinationCity);
             console.log(sDate);
             console.log(eDate);
         }
     }
 
-    function handleOriginInput(e:any){
-        setOrigin(e.target.value);
-        checkInputs();
+    function handleoriginCityInput(e:any){
+        setoriginCity(e.target.value);
     }
 
     function handleDestInput(e:any){
-        setDestination(e.target.value);
-        checkInputs();
+        setdestinationCity(e.target.value);
     }
 
     useEffect(() => {
         window.location.href="#travel";
       },[]);
+
+    useEffect(() => {
+        checkInputs();
+    },[originCity,destinationCity,sDate,eDate]);
 
     return (
         <div className="travelPage">
@@ -83,12 +85,10 @@ const TravelPage: React.FC = () => {
                 <div className="searchBar">
                     <div className="searchBox originDest">
                         <div className="origin">
-                            // TODO: FIX THIS
-                            <input type="text" placeholder="Origin" className="origin_input" value={origin} onChange={handleOriginInput}/>
+                            <input type="text" placeholder="origin" className="origin_input" value={originCity} onChange={handleoriginCityInput}/>
                         </div>
                         <div className="dest">
-                            // TODO: FIX THIS
-                            <input type="text" placeholder="Destination" className="origin_input" value={destination} onChange={handleDestInput}/>
+                            <input type="text" placeholder="destination" className="origin_input" value={destinationCity} onChange={handleDestInput}/>
                         </div>
                     </div>
                     <div className="calendar_pick">
