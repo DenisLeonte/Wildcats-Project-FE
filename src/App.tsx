@@ -4,14 +4,17 @@ import TravelPageWrapper from "./components/features/Travel/TravelPageWrapper";
 import { PageProvider } from "./contexts/PageContext/PageManager";
 import SearchResultPageWrapper from "./components/features/SearchResult/SearchResultPageWrapper";
 import { QueryProvider } from "./contexts/QueryContext/QueryContextManager";
+import { CostOfLivingProvider } from "./contexts/CostOfLivingContext/CostOfLivingContextManager";
 
 function App(){
   return(
     <PageProvider>
       <QueryProvider>
-        <HomeComponentWrapper/>
-        <TravelPageWrapper/>
-        <SearchResultPageWrapper/>
+        <CostOfLivingProvider>
+          <HomeComponentWrapper/>
+          <TravelPageWrapper/>
+          <SearchResultPageWrapper/>
+        </CostOfLivingProvider>
       </QueryProvider>
     </PageProvider>
   )
