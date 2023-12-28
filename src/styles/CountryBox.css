@@ -1,14 +1,17 @@
+@import "fonts.css";
+
 .box{
     position: absolute;
     top: 25%;
     right: 5%;
-    height: 500px;
-    width: 450px;
+    height: 480px;
+    width: 430px;
     background-color: white;
     animation: fadeIn 0.5s ease-in-out forwards;
-    border-radius: 20px;
+    border-radius: 0 0 20px 20px;
     border: 3px solid var(--VerdeScris, #004006);
     background: var(--AlbastruInchis, #2C5B69);
+
 }
 
 @keyframes fadeIn {
@@ -29,7 +32,7 @@
     width: 100%;
 }
 
-button{
+.cbButton{
     position:absolute;
     border-radius: 20px;
     border: 2px solid var(--VerdeScris, #004006);
@@ -44,21 +47,16 @@ button{
     left: 50%;
     transform: translateX(-50%);
 }
-.button1{
-    width:330px;
-    padding:12px;
-    top:15%;
-}
 
 .button2{
-    width:420px;
+    width:400px;
     padding:12px;
     padding-left: 20px !important;
-    top:40%;
+    top:35%;
 }
 
 .button3{
-    width:420px;
+    width:400px;
     padding:12px;
     top:65%;
     /* text-align: left !important;  */
@@ -69,4 +67,20 @@ button{
     right:3%;
     top:50%;
     transform:translateY(-50%);
+}
+
+.countryNameTitle{
+    text-align: center;
+    color: #FFF;
+    text-align: center;
+    font-family: Playfair Display;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 100px;
+    border-bottom: 2px solid var(--VerdeScris, #004006);
+    height: 100px;
+        
+    justify-content: center;
+    align-items: center;
 }
