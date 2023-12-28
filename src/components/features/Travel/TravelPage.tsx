@@ -84,15 +84,15 @@ const TravelPage: React.FC = () => {
                 <div className="searchBar">
                     <div className="searchBox originDest">
                         <div className="origin">
-                            <input type="text" placeholder="origin" className="origin_input" value={originCity} onChange={handleoriginCityInput}/>
+                            <input type="text" placeholder="Origin" className="origin_input" value={originCity} onChange={handleoriginCityInput}/>
                         </div>
                         <div className="dest">
-                            <input type="text" placeholder="destination" className="origin_input" value={destinationCity} onChange={handleDestInput}/>
+                            <input type="text" placeholder="Destination" className="origin_input" value={destinationCity} onChange={handleDestInput}/>
                         </div>
                     </div>
                     <div className="calendar_pick">
                         <div className="searchBox" style={{padding:"0px"}}>
-                            <RangePicker bordered={false} onChange={handleDateChange}/>
+                            <RangePicker bordered={false} onChange={handleDateChange} className={"datePicker"}/>
                         </div>
                         
                     </div>
