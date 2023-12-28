@@ -1,32 +1,34 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 interface QueryContextProps {
-    origin: string;
-    destination: string;
-    startDate: Date;
-    endDate: Date;
-    passengerCount: number;
+    query:any;
+    updateQuery: (new_query: any) => void;
 }
 
 const initialContext: QueryContextProps = {
-    origin: "",
-    destination: "",
-    startDate: new Date(),
-    endDate: new Date(),
-    passengerCount: 1
+    query: {},
+    updateQuery: () => { },
 };
 
 const QueryContext = createContext<QueryContextProps>(initialContext);
 
 export const QueryProvider = ({children}: {children: React.ReactNode}) =>{
-    const [query, setQuery] = useState(initialContext);
+    const [query, setQuery] = useState(() =>{
+        return JSON.parse(localStorage.getItem('query') || "{}");
+    });
     const updateQuery = (new_query:QueryContextProps) =>{
         setQuery(new_query);
+        localStorage.setItem('query', JSON.stringify(new_query));
     };
+
+    useEffect(() => {
+        let newQuery = JSON.parse(localStorage.getItem('query') || "{}");
+        updateQuery(newQuery);
+    }, []);
 
     return (
         <div>
-            <QueryContext.Provider value={{ ...query, ...updateQuery }}>
+            <QueryContext.Provider value={{ query, updateQuery }}>
                 {children}
             </QueryContext.Provider>
         </div>
