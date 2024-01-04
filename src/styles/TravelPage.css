@@ -103,6 +103,8 @@ left:8%;
 
 .pictureOfferBox img{
   object-fit:cover;
+  width:inherit;
+  height: inherit;
 }
 
 .textOfferBox{
