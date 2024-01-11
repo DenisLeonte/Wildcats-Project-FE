@@ -1,9 +1,0 @@
-.sticky-navbar {
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Make sure the navbar is above other items */
-    background-color: #fff; /* Assuming you want a white navbar */
-    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2); /* Optional: Adds a slight shadow for depth */
-    width: 100%;
-  }
-  
