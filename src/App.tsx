@@ -5,19 +5,23 @@ import SearchResultPageWrapper from "./components/features/SearchResult/SearchRe
 import { QueryProvider } from "./contexts/QueryContext/QueryContextManager";
 import { CostOfLivingProvider } from "./contexts/CostOfLivingContext/CostOfLivingContextManager";
 import CostOfLivingWrapper from "./components/features/CostOfLiving/CostOfLivingWrapper";
+import { ApiContextProvider } from "./contexts/ApiContextProvider/ApiContextProvider";
 
-function App(){
-  return(
-    <PageProvider>
-      <QueryProvider>
-        <CostOfLivingProvider>
-          <HomeComponentWrapper/>
-          <TravelPageWrapper/>
-          <SearchResultPageWrapper/>
-          <CostOfLivingWrapper/>
-        </CostOfLivingProvider>
-      </QueryProvider>
-    </PageProvider>
+function App() {
+  return (
+    <ApiContextProvider>
+      <PageProvider>
+        <QueryProvider>
+          <CostOfLivingProvider>
+            <HomeComponentWrapper />
+            <TravelPageWrapper />
+            <SearchResultPageWrapper />
+            <CostOfLivingWrapper />
+          </CostOfLivingProvider>
+        </QueryProvider>
+      </PageProvider>
+    </ApiContextProvider>
+
   )
 }
 

@@ -1,0 +1,62 @@
+/* DualComboBox.css */
+.dual-combo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #7DA6B2;
+    /* Or var(--AlbastruDeschis, #7DA6B2) */
+    border: 3px solid #9D9D9D;
+    /* Or var(--text-dark-light, #9D9D9D) */
+    border-radius: 20px;
+    /* Adjust radius as needed to match the image */
+    padding: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Optional: to add subtle shadow */
+}
+
+.divider {
+    height: 38px;
+    /* Match the height of ComboBox */
+    width: 1px;
+    background-color: #9D9D9D;
+    /* Or var(--text-dark-light, #9D9D9D) */
+    margin: 0 16px;
+    /* Space between the ComboBoxes */
+}
+
+/* Override styles for ComboBox components */
+.dual-combo-box .combo-box {
+    flex-grow: 1;
+    margin: 0;
+    /* Remove any default margin if present */
+}
+
+.dual-combo-box .combo-box input {
+    border: none;
+    border-radius: 10px;
+    /* Adjust to match the image */
+    box-shadow: none;
+    /* Remove any default shadow */
+    background: transparent;
+    /* Make input background transparent */
+    color: #fff;
+    /* Set text color to white */
+
+}
+
+/* Adjust the dropdown list if needed */
+.dual-combo-box .combo-box ul {
+    border: 2px solid #9D9D9D;
+    top: 100%;
+}
+
+.dual-combo-box .combo-box li {
+    background-color: #7DA6B2;
+    /* Or var(--AlbastruDeschis, #7DA6B2) */
+    color: #fff;
+}
+
+.dual-combo-box .combo-box li:hover {
+    background-color: #6c929b;
+    /* A slightly darker shade for hover effect */
+}

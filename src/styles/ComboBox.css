@@ -1,0 +1,50 @@
+/* ComboBox.css */
+.combo-box {
+  position: relative; /* Ensure the dropdown positions itself relative to this container */
+  font-family: Inter; /* Match the font to the .origin_input */
+  width: 100%;
+  height: 100%;
+}
+
+.combo-box input {
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  font-size: 14px; /* Match the font size to .origin_input */
+  font-weight: 500; /* Match the font weight to .origin_input */
+  color: var(--text-dark-light, #2b2b2b); /* Match the color */
+  background: var(--interactive-hovered, #F2F2F2); /* Match the background */
+  border: 0px; /* No border */
+  border-radius: 6px; /* Match the border radius */
+  box-sizing: border-box; /* Ensure padding doesn't affect the final size */
+}
+
+.combo-box input::placeholder {
+    color: var(--text-dark-light, #9D9D9D); 
+    opacity: 1; 
+}
+
+.combo-box ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ced4da;
+  border-top: none; /* Makes it look like it's attached to the input box */
+  border-radius: 0 0 0.25rem 0.25rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1000;
+  background-color: #fff;
+  max-height: 200px;
+  overflow-y: auto; /* Enables scrolling for long lists */
+}
+
+.combo-box li {
+  padding: 0.5rem;
+  cursor: pointer;
+  color : #2b2b2b;
+}
+
+.combo-box li:hover {
+  background-color: #f8f9fa;
+}

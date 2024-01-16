@@ -7,5 +7,6 @@ export interface City {
     country: Country;
     latitude: number;
     longitude: number;
+    main_iata_code: string;
 }
 

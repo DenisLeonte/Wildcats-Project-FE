@@ -4,6 +4,7 @@ import "../../../styles/SearchResultPage.css";
 import { addDays, format, subDays } from 'date-fns';
 import { useQueryContext } from '../../../contexts/QueryContext/QueryContextManager';
 import Result from '../Result/Result';
+import ComboBox from './ComboBox';
 
 export const SearchResultPage: React.FC = () => {
     const images = require.context('../../../../assets/', true);
