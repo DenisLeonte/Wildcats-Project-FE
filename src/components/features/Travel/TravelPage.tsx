@@ -4,12 +4,10 @@ import { DatePicker, Space } from 'antd';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import dayjs from 'dayjs';
-import { set } from 'date-fns';
 import { usePageContext } from '../../../contexts/PageContext/PageManager';
 import { useQueryContext } from '../../../contexts/QueryContext/QueryContextManager';
 import OfferBox from './OfferTravelPage';
-import ComboBox from '../SearchResult/ComboBox';
-import DualComboBox from '../SearchResult/DualComboBox';
+import DualCityComboBox from '../SearchResult/DualCityComboBox';
 import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider'
 
 const TravelPage: React.FC = () => {
@@ -88,7 +86,7 @@ const TravelPage: React.FC = () => {
             <div className="landing backgroundTravel">
                 <Navbar />
                 <div className="searchBar">
-                    <DualComboBox optionsFirst={Cities.map((city) => { return city.name })} optionsSecond={Cities.map((city) => { return city.name })} />
+                    <DualCityComboBox optionsFirst={Cities} optionsSecond={Cities} />
 
                     <div className="calendar_pick">
                         <div className="searchBox" style={{ padding: "0px" }}>

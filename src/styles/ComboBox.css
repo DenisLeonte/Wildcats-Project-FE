@@ -32,7 +32,7 @@
   border-top: none; /* Makes it look like it's attached to the input box */
   border-radius: 0 0 0.25rem 0.25rem;
   position: absolute;
-  width: 100%;
+  width: 200%;
   z-index: 1000;
   background-color: #fff;
   max-height: 200px;
@@ -48,3 +48,12 @@
 .combo-box li:hover {
   background-color: #f8f9fa;
 }
+
+.combo-box li span {
+    display: inline-block;
+    width: 20px; /* Adjust as needed */
+    height: 15px; /* Adjust as needed */
+    margin-right: 10px; /* Space between flag and text */
+    background-size: cover; /* Ensure the flag covers the span area */
+    vertical-align: middle; /* Align with the text */
+  }

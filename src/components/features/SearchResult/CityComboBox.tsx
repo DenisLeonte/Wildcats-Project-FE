@@ -1,21 +1,23 @@
 // ComboBox.tsx
 import React, { useState, useEffect } from 'react';
 import '../../../styles/ComboBox.css';
+import 'flag-icons/css/flag-icons.min.css';
+import { City } from '../../../types/City';
 
 interface ComboBoxProps {
-  options: string[];
+  options: City[];
   placeholder?: string;
 }
 
-const ComboBox: React.FC<ComboBoxProps> = ({ options, placeholder }) => {
+const CityComboBox: React.FC<ComboBoxProps> = ({ options, placeholder }) => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
+  const [filteredOptions, setFilteredOptions] = useState<City[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     setFilteredOptions(
       options.filter(option => 
-        option.toLowerCase().includes(searchTerm.toLowerCase())
+        option.name.toLowerCase().includes(searchTerm.toLowerCase())
       )
     );
   }, [searchTerm, options]);
@@ -33,8 +35,9 @@ const ComboBox: React.FC<ComboBoxProps> = ({ options, placeholder }) => {
       {showDropdown && (
         <ul>
           {filteredOptions.map((option, index) => (
-            <li key={index} onClick={() => setSearchTerm(option)}>
-              {option}
+            <li key={index} onClick={() => setSearchTerm(option.name)}>
+              <span className={`fi fi-${option.country.code.toLowerCase()}`} style={{ marginRight: '10px' }}></span>
+              {option.name}
             </li>
           ))}
         </ul>
@@ -43,4 +46,4 @@ const ComboBox: React.FC<ComboBoxProps> = ({ options, placeholder }) => {
   );
 };
 
-export default ComboBox;
+export default CityComboBox;

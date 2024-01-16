@@ -98,4 +98,10 @@ export const getFormattedData = async () : Promise<FormattedData> =>  {
     }
   };
 
-
+export const getCsrfToken = () => {
+    const token = document.cookie.split(';').find(c => c.trim().startsWith('csrftoken='));
+    if (token) {
+        return token.split('=')[1];
+    }
+    return '';
+}

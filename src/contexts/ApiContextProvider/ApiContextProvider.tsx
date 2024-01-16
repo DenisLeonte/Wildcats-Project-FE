@@ -8,13 +8,14 @@ interface ApiContextState {
     Countries: Country[];
     Cities: City[];
     CostOfLivingData: CostOfLivingData[];
-    // You can also include functions to update these states if needed
+    isLoading: boolean;
   }
 
 const InitialApiContextState : ApiContextState = {
     Countries : [],
     Cities: [],
     CostOfLivingData : [],
+    isLoading: true,
 }
 export const ApiContext = createContext(InitialApiContextState);
 
@@ -22,13 +23,19 @@ export const ApiContextProvider = ({children}: {children: React.ReactNode}) => {
     const [countriesState, setCountriesState] = useState(InitialApiContextState.Countries);
     const [citiesState, setCitiesState] = useState(InitialApiContextState.Cities);
     const [costOfLivingDataState, setCostOfLivingDataState] = useState(InitialApiContextState.CostOfLivingData);
+    const [isLoading, setIsLoading] = useState(InitialApiContextState.isLoading);
 
     useEffect(() => {
         getFormattedData().then((data) => {
             setCountriesState(data.countries);
             setCitiesState(data.cities);
             setCostOfLivingDataState(data.costOfLiving);
-            console.log(data);
+        })
+        .catch((error) => {
+            console.log(error);
+        })
+        .finally(() => {
+            setIsLoading(false);
         });
 
     }, []);
@@ -37,6 +44,7 @@ export const ApiContextProvider = ({children}: {children: React.ReactNode}) => {
         Countries: countriesState,
         Cities: citiesState,
         CostOfLivingData: costOfLivingDataState,
+        isLoading: isLoading,
     };
 
     return (

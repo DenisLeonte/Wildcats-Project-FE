@@ -12,7 +12,6 @@ type ResultProps = {
 
 const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocation,landingLocation, price, airline }) => {
     const images = require.context('../../../../assets/airlines', true);
-    
     return (
         <div className="result">
             <div>
