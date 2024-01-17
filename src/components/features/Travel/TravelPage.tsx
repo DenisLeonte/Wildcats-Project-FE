@@ -10,11 +10,14 @@ import OfferBox from './OfferTravelPage';
 import DualCityComboBox from '../SearchResult/DualCityComboBox';
 import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider'
 import { City } from '../../../types/City';
+import { useCostOfLivingContext } from '../../../contexts/CostOfLivingContext/CostOfLivingContextManager';
+import { Country } from '../../../types/Country';
 const EmptyCity = {id:-1, name: "", code: "", latitude: -1, longitude: -1, main_iata_code: "", country: {id: -1, name: "", code: ""}} as City;
 
 const TravelPage: React.FC = () => {
     const context = useContext(ApiContext);
     const { Cities } = context;
+    const { country } = useCostOfLivingContext();
     const { page, updatePage } = usePageContext();
     const { query, updateQuery } = useQueryContext();
     const { RangePicker } = DatePicker;
@@ -81,14 +84,17 @@ const TravelPage: React.FC = () => {
     useEffect(() => {
         checkInputs();
     }, [originCity, destinationCity, sDateSel, eDateSel, sDate, eDate]);
-    console.log(context)
+    //console.log(context)
+
+    const filteredCities = country != {id : -1, name: "", code: ""} as Country ? Cities.filter(c => c.country.name === country.name) : Cities;
+
     return (
         <div className="travelPage">
 
             <div className="landing backgroundTravel">
                 <Navbar />
                 <div className="searchBar">
-                    <DualCityComboBox optionsFirst={Cities} optionsSecond={Cities} />
+                    <DualCityComboBox optionsFirst={Cities} optionsSecond={filteredCities} />
 
                     <div className="calendar_pick">
                         <div className="searchBox" style={{ padding: "0px" }}>

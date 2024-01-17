@@ -8,7 +8,7 @@ const CostOfLivingPage: React.FC = () => {
     return (
         <div className="costOfLivingPage">
             <Navbar/>
-            <h1 className="COLTitle">Cost of Living for {country}</h1>
+            <h1 className="COLTitle">Cost of Living for {country.name}</h1>
             <div className="flexCOLgrid">
                 <div className="flexCOLrow" style={{height:"352px"}}>
                     <div className="COLBOX1 COLBOX">

@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { Country } from "../../types/Country";
 
 interface CostOfLivingContextProps{
-    country: string;
-    updateCountry: (new_country: string) => void;
+    country: Country;
+    updateCountry: (new_country: Country) => void;
 }
 
 const initialContext: CostOfLivingContextProps = {
-    country: "",
+    country: {id: -1, name: "", code: ""},
     updateCountry: () => { },
 };
 
@@ -14,17 +15,22 @@ const CostOfLivingContext = createContext<CostOfLivingContextProps>(initialConte
 
 export const CostOfLivingProvider = ({children}: {children: React.ReactNode}) =>{
     const [country, setCountry] = useState(() =>{
-        return localStorage.getItem('country') || "";
+        try{
+            const Country = JSON.parse(localStorage.getItem('country') || "") as Country;
+            return Country;
+        }
+        catch (error){
+            return {id: -1, name: "", code: ""} as Country;
+        }
     });
 
-    const updateCountry = (new_country:string) =>{
+    const updateCountry = (new_country:Country) =>{
         setCountry(new_country);
-        localStorage.setItem('country', new_country);
+        localStorage.setItem('country', JSON.stringify(new_country));
     };
 
     useEffect(() => {
-        let newCountry = localStorage.getItem('country') || "";
-        updateCountry(newCountry);
+        updateCountry(country);
     }, []);
 
     return(

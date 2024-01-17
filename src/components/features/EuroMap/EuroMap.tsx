@@ -9,6 +9,7 @@ import CountryBox from '../CountryBox/CountryBox';
 import { usePageContext } from "../../../contexts/PageContext/PageManager";
 import { useCostOfLivingContext } from '../../../contexts/CostOfLivingContext/CostOfLivingContextManager';
 import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider';
+import { Country } from '../../../types/Country';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
@@ -26,7 +27,7 @@ function EuroMap() {
   const animatedWidth:number = 1200;
   const animationFrames:number=1;
   let selectedCountry:string="";
-  
+
   useEffect(() =>{
     const enabled:string = process.env.REACT_APP_MAPBOX_ENABLED!;
     if(enabled === "true" && page == "home"){
@@ -71,7 +72,10 @@ function EuroMap() {
           getPosZoom(e);
           selectedCountry = e.features![0].properties!.name_en;
           setCountry(selectedCountry);
-          colContext.updateCountry(selectedCountry);
+          const currentCountry : Country = Countries.find(c => c.name === selectedCountry)!;
+          colContext.updateCountry(currentCountry);
+          console.log("current country: "+currentCountry);
+          console.log("context: "+colContext)
           let flyOpt = fly(selectedCountry);
           e_map.current!.easeTo(flyOpt as FlyToOptions);
           

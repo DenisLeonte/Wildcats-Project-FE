@@ -18,7 +18,6 @@ function CountryBox({ selectedCountry }: CountryBoxProps) {
     }
 
     function handleCOLClick(){
-        updateCountry(selectedCountry);
         updatePage("costOfLiving");
         window.location.href = "/#costOfLiving";
     }
