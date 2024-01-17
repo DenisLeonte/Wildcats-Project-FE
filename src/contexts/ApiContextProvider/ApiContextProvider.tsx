@@ -47,6 +47,7 @@ export const ApiContextProvider = ({children}: {children: React.ReactNode}) => {
         isLoading: isLoading,
     };
 
+    if(isLoading) return <div><h1>Loading...</h1></div>;
     return (
         <ApiContext.Provider value={contextValue}>
             {children}

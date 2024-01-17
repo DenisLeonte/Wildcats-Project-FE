@@ -7,9 +7,10 @@ import { City } from '../../../types/City';
 interface ComboBoxProps {
   options: City[];
   placeholder?: string;
+  onCityChange?: (value: City) => void;
 }
 
-const CityComboBox: React.FC<ComboBoxProps> = ({ options, placeholder }) => {
+const CityComboBox: React.FC<ComboBoxProps> = ({ options, placeholder, onCityChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredOptions, setFilteredOptions] = useState<City[]>([]);
   const [showDropdown, setShowDropdown] = useState(false);
@@ -28,7 +29,13 @@ const CityComboBox: React.FC<ComboBoxProps> = ({ options, placeholder }) => {
         type="text" 
         placeholder={placeholder}
         value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
+        onChange={(e) => {setSearchTerm(e.target.value); 
+            if (onCityChange) {
+              const selectedCity = options.find(c => c.name === e.target.value);
+              if (selectedCity) {
+                onCityChange(selectedCity);
+              }
+            }}}
         onFocus={() => setShowDropdown(true)}
         onBlur={() => setTimeout(() => setShowDropdown(false), 100)}
       />

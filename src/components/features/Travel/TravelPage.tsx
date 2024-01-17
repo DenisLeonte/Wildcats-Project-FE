@@ -9,6 +9,8 @@ import { useQueryContext } from '../../../contexts/QueryContext/QueryContextMana
 import OfferBox from './OfferTravelPage';
 import DualCityComboBox from '../SearchResult/DualCityComboBox';
 import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider'
+import { City } from '../../../types/City';
+const EmptyCity = {id:-1, name: "", code: "", latitude: -1, longitude: -1, main_iata_code: "", country: {id: -1, name: "", code: ""}} as City;
 
 const TravelPage: React.FC = () => {
     const context = useContext(ApiContext);
@@ -17,8 +19,8 @@ const TravelPage: React.FC = () => {
     const { query, updateQuery } = useQueryContext();
     const { RangePicker } = DatePicker;
     const [passNo, setPassNo] = useState(1);
-    const [originCity, setoriginCity] = useState("");
-    const [destinationCity, setdestinationCity] = useState("");
+    const [originCity, setoriginCity] = useState(EmptyCity);
+    const [destinationCity, setdestinationCity] = useState(EmptyCity);
     const [sDate, setSdate] = useState(dayjs());
     const [eDate, setEdate] = useState(dayjs());
     const [validInput, setValidInput] = useState(false);
@@ -45,7 +47,7 @@ const TravelPage: React.FC = () => {
     };
 
     function checkInputs() {
-        if (originCity != "" && destinationCity != "" && originCity != destinationCity && eDateSel && sDateSel) {
+        if (originCity != EmptyCity && destinationCity != EmptyCity && originCity != destinationCity && eDateSel && sDateSel) {
             setValidInput(true);
         }
         else {
@@ -79,7 +81,7 @@ const TravelPage: React.FC = () => {
     useEffect(() => {
         checkInputs();
     }, [originCity, destinationCity, sDateSel, eDateSel, sDate, eDate]);
-
+    console.log(context)
     return (
         <div className="travelPage">
 

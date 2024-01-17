@@ -8,11 +8,13 @@ import { map } from 'leaflet';
 import CountryBox from '../CountryBox/CountryBox';
 import { usePageContext } from "../../../contexts/PageContext/PageManager";
 import { useCostOfLivingContext } from '../../../contexts/CostOfLivingContext/CostOfLivingContextManager';
+import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
   const colContext = useCostOfLivingContext();
+  const {Countries} = useContext(ApiContext);
   const {page, updatePage} = usePageContext();
   const mapContainer = useRef<HTMLDivElement |null>(null);
   const [showDiv,setShowDiv] = useState<boolean>(false);
@@ -24,7 +26,7 @@ function EuroMap() {
   const animatedWidth:number = 1200;
   const animationFrames:number=1;
   let selectedCountry:string="";
-
+  
   useEffect(() =>{
     const enabled:string = process.env.REACT_APP_MAPBOX_ENABLED!;
     if(enabled === "true" && page == "home"){
