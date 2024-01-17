@@ -1,19 +1,22 @@
 import { createContext, useContext, useEffect, useState } from "react";
 
+//provide default page
+const def_page = "home"
+
 interface PageContextProps {
   page: string;
   updatePage: (new_page: string) => void;
 }
 // Provide initial context value
 const initialContext: PageContextProps = {
-  page: "home",
+  page: def_page,
   updatePage: () => { },
 };
 const PageContext = createContext<PageContextProps>(initialContext);
 
 export const PageProvider = ({ children }: { children: React.ReactNode; }) => {
   const [page, setPage] = useState(() => {
-    return localStorage.getItem('page') || "home";
+    return localStorage.getItem('page') || def_page;
   });
   const updatePage = (new_page: string) => {
     setPage(new_page);
@@ -21,7 +24,7 @@ export const PageProvider = ({ children }: { children: React.ReactNode; }) => {
   };
 
   useEffect(() => {
-    updatePage(localStorage.getItem('page') || "home");
+    updatePage(localStorage.getItem('page') || def_page);
   }, []);
 
   return (

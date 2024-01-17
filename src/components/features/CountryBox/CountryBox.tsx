@@ -22,6 +22,10 @@ function CountryBox({ selectedCountry }: CountryBoxProps) {
         updatePage("costOfLiving");
         window.location.href = "/#costOfLiving";
     }
+
+    function hotelView(){
+        updatePage("searchHotels")
+    }
     
     return (
         <div className='box'>
@@ -45,6 +49,7 @@ function CountryBox({ selectedCountry }: CountryBoxProps) {
                     <path d="M14.7 13.125H20.3C20.3 11.75 19.04 10.625 17.5 10.625C15.96 10.625 14.7 11.75 14.7 13.125Z" fill="#004006"/>
                 </svg>
                 </button>
+                <button className="button4 cbButton" onClick={hotelView}>Book a hotel to <br/>{selectedCountry}</button>
             </div>
         </div>
     );
