@@ -7,6 +7,7 @@ import dayjs from 'dayjs';
 import { set } from 'date-fns';
 import { usePageContext } from '../../../contexts/PageContext/PageManager';
 import { useQueryContext } from '../../../contexts/QueryContext/QueryContextManager';
+import OfferBox from './OfferTravelPage';
 
 
 const TravelPage: React.FC = () => {
@@ -84,15 +85,15 @@ const TravelPage: React.FC = () => {
                 <div className="searchBar">
                     <div className="searchBox originDest">
                         <div className="origin">
-                            <input type="text" placeholder="origin" className="origin_input" value={originCity} onChange={handleoriginCityInput}/>
+                            <input type="text" placeholder="Origin" className="origin_input" value={originCity} onChange={handleoriginCityInput}/>
                         </div>
                         <div className="dest">
-                            <input type="text" placeholder="destination" className="origin_input" value={destinationCity} onChange={handleDestInput}/>
+                            <input type="text" placeholder="Destination" className="origin_input" value={destinationCity} onChange={handleDestInput}/>
                         </div>
                     </div>
                     <div className="calendar_pick">
                         <div className="searchBox" style={{padding:"0px"}}>
-                            <RangePicker bordered={false} onChange={handleDateChange}/>
+                            <RangePicker bordered={false} onChange={handleDateChange} className={"datePicker"}/>
                         </div>
                         
                     </div>
@@ -123,9 +124,17 @@ const TravelPage: React.FC = () => {
                     </div>
                 </div>
             </div>
-            <div className="offers">
+            <div className="offers offersbackground">
                 <div className="offerWrapper">
-                    <p style ={{margin:0}}>OFFERS PAGE</p>
+                    <div className='offertext'><p>Cheap flight offers</p></div>
+                    <div className="offerBoxWrapper">
+                        <OfferBox cityName="MADRID" fromPlace='from Lisbon' price='€ 49.99' fromPrice='from' picture ="1picture_offers.png"></OfferBox>
+                        <OfferBox cityName="BERLIN" fromPlace='from Cluj' price='€ 56.99' fromPrice='from' picture ="2picture_offers.png"></OfferBox>
+                        <OfferBox cityName="PARIS" fromPlace='from London' price='€ 35.99' fromPrice='from'  picture ="3picture_offers.png"></OfferBox>
+                        <OfferBox cityName="ROME" fromPlace='from Oslo' price='€ 69.99' fromPrice='from' picture ="4picture_offers.png"></OfferBox>
+                        <OfferBox cityName="MILANO" fromPlace='from Lyon' price='€ 25.99' fromPrice='from' picture ="5picture_offers.png"></OfferBox>
+                        
+                    </div>
                     <Footer/>
                 </div>
             </div>

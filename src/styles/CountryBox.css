@@ -48,6 +48,10 @@
     transform: translateX(-50%);
 }
 
+.cbButton:hover{
+    cursor: pointer;
+}
+
 .button2{
     width:400px;
     padding:12px;

@@ -38,6 +38,14 @@ body::-webkit-scrollbar {
     position:relative;
 }
 
+.offersbackground {
+  background-color: #7B9DBB;
+  background-position: center center;
+  background-repeat: no-repeat;
+    background-attachment: fixed;
+    position:relative;
+}
+
 .searchBar{
   scale:150%;
   position:absolute;
@@ -56,6 +64,109 @@ body::-webkit-scrollbar {
   background: var(--SageDeschis, #B2C8BA);
 }
 
+.offertext{
+display: flex;
+width: 579px;
+height: 81px;
+flex-direction: column;
+justify-content: center;
+flex-shrink: 0;
+font-family: Roboto;
+font-size: 45px;
+color:#FFFFFF;  
+-webkit-text-stroke: 1px #CCCCCC;
+position: absolute;
+top:6%;
+left:8%;
+}
+
+.offers{
+  
+  overflow-y: auto;
+  width: 800px;
+  height: 390px;
+}
+
+.offerBox{
+  width: 320px;
+  height: 390px;
+  border: 2px solid #004006;
+  top: 20%;
+  left: 5%;
+}
+
+.pictureOfferBox{
+  width: 320px;
+  height: 280px;
+  position: relative;
+}
+
+.pictureOfferBox img{
+  object-fit:cover;
+  width:inherit;
+  height: inherit;
+}
+
+.textOfferBox{
+  width: 320px;
+  height: 112px;
+  border-top: 2px solid #004006;
+  border-bottom: 1px solid #004006 ;
+  background-color: #F2F2F2;
+  position: absolute;
+  top: 71%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+  grid-gap: 0;
+  gap: 5px;
+}
+
+.textCity{
+  grid-row: 1;
+  grid-column: 1;
+  font-family: Roboto;
+  font-size: 30px;
+  color:#004006;
+  text-align: left;
+  padding-left: 18px;
+  padding-top: 20px;
+  -webkit-text-stroke: 2px #2C5730;
+}
+
+.textFromCity{
+  font-family: Roboto;
+  font-size: 24px;
+  color: #728D7C;
+  text-align: left;
+  grid-row: 2;
+  grid-column: 1;
+  padding-left: 18px;
+}
+
+.textPrice{
+  grid-row: 2;
+  grid-column: 2;
+  font-family: Roboto;
+  font-size: 33px;
+  color: #004006;
+  padding-left: 30px;
+  padding-bottom: 15px;
+  -webkit-text-stroke: 2px #2C5730;
+}
+
+.textFrom{
+  font-family: Roboto;
+  font-size: 25px;
+  color: #004006;
+  grid-row: 1;
+  grid-column: 2;
+  padding-top: 20px;
+  padding-left: 50px;
+  justify-content: right;
+}
+
+
 .searchBox{
   border-radius: 6px;
   border: 1px solid var(--text-dark-light, #9D9D9D);
@@ -66,7 +177,7 @@ body::-webkit-scrollbar {
   font-family: Inter;
   font-size:14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 
@@ -306,4 +417,24 @@ body::-webkit-scrollbar {
 .disable_animation:active {
   transition:none !important;
   transform:scale(1) !important;
+}
+
+.offerBoxWrapper{
+  display:flex;
+  gap:20px;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.datePicker{
+  color:inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: bold !important;
 }
