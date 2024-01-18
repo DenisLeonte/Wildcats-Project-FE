@@ -35,10 +35,9 @@ export const HotelSearch:React.FC = () =>{
         <div className="hotelSearchPage hsBackground">
             <Navbar/>
             <div className="hotelSearchSelectors">
-                <RangePicker bordered={false} onChange={handleDateChange} className={"datePicker"}/>
+                <RangePicker bordered={true} onChange={handleDateChange} className={"datePicker"}/>
             </div>
-            <div className="resultsFound"> Found 40 properties </div>
-            <div className="hotelResultList">
+            <div className="hotelResultList"><div className="resultsFound"> Found 40 properties </div>
                 <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
                 <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
                 <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
