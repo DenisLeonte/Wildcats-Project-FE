@@ -3,6 +3,7 @@ import "../../../styles/HotelSearch.css";
 import { useEffect, useState } from "react";
 import { DatePicker, Space } from 'antd';
 import dayjs from "dayjs";
+import HotelBox from "./HotelData";
 
 export const HotelSearch:React.FC = () =>{
 
@@ -36,8 +37,18 @@ export const HotelSearch:React.FC = () =>{
             <div className="hotelSearchSelectors">
                 <RangePicker bordered={false} onChange={handleDateChange} className={"datePicker"}/>
             </div>
+            <div className="resultsFound"> Found 40 properties </div>
             <div className="hotelResultList">
-                AICI PUI CLARA!!!
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
             </div>
         </div>
     );
