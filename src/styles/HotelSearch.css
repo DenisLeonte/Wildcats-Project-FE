@@ -27,7 +27,7 @@
 }
 
 .hotelResultList{
-    margin-top:calc(100vh * 0.35);
+    margin-top:calc(100vh * 0.4);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -52,9 +52,17 @@
     font-weight: 700;
 }
 .HotelBox{
-    width: 1150px;
-    height: 126px;
-    margin-left: 20px;
+    border-radius: 20px;
+    background: #FFF;
+    display: flex;
+    width: 916px;
+    height: 94px;
+    padding: 18px 30px 14.604px 29px;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    gap: 80px;
+    align-items: center;
+    flex-direction: row;
 }
 
 .HotelName{
