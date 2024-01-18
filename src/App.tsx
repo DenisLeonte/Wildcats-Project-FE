@@ -4,7 +4,7 @@ import SearchResultPageWrapper from "./components/features/SearchResult/SearchRe
 import CostOfLivingWrapper from "./components/features/CostOfLiving/CostOfLivingWrapper";
 import { PageProvider } from "./contexts/PageContext/PageManager";
 import { QueryProvider } from "./contexts/QueryContext/QueryContextManager";
-import { CostOfLivingProvider } from "./contexts/CostOfLivingContext/CostOfLivingContextManager";
+import { UserSelectionContextProvider } from "./contexts/CostOfLivingContext/UserSelectionContextProvider";
 import { ApiContextProvider } from "./contexts/ApiContextProvider/ApiContextProvider";
 import { AuthProvider } from "./contexts/AuthContext/AuthProvider";
 
@@ -14,12 +14,12 @@ function App() {
       <ApiContextProvider>
         <PageProvider>
           <QueryProvider>
-            <CostOfLivingProvider>
+            <UserSelectionContextProvider>
               <HomeComponentWrapper />
               <TravelPageWrapper />
               <SearchResultPageWrapper />
               <CostOfLivingWrapper />
-            </CostOfLivingProvider>
+            </UserSelectionContextProvider>
           </QueryProvider>
         </PageProvider>
       </ApiContextProvider>

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import '../../../styles/CountryBox.css';
 import { usePageContext } from "../../../contexts/PageContext/PageManager";
-import { useCostOfLivingContext } from '../../../contexts/CostOfLivingContext/CostOfLivingContextManager';
+import { useUserSelectionContext } from '../../../contexts/CostOfLivingContext/UserSelectionContextProvider';
 
 interface CountryBoxProps {
     selectedCountry: string;
@@ -11,7 +11,7 @@ interface CountryBoxProps {
 function CountryBox({ selectedCountry }: CountryBoxProps) {
 
     const {page, updatePage} = usePageContext();
-    const {country, updateCountry} = useCostOfLivingContext();
+    const {country, updateCountry} = useUserSelectionContext();
     function switchPage(){
         updatePage("travel");
         window.location.href = "/#travel";

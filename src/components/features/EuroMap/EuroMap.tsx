@@ -7,14 +7,14 @@ import fly from './flyToData';
 import { map } from 'leaflet';
 import CountryBox from '../CountryBox/CountryBox';
 import { usePageContext } from "../../../contexts/PageContext/PageManager";
-import { useCostOfLivingContext } from '../../../contexts/CostOfLivingContext/CostOfLivingContextManager';
+import { useUserSelectionContext } from '../../../contexts/CostOfLivingContext/UserSelectionContextProvider';
 import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider';
 import { Country } from '../../../types/Country';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
-  const colContext = useCostOfLivingContext();
+  const colContext = useUserSelectionContext();
   const {Countries} = useContext(ApiContext);
   const {page, updatePage} = usePageContext();
   const mapContainer = useRef<HTMLDivElement |null>(null);
@@ -74,8 +74,6 @@ function EuroMap() {
           setCountry(selectedCountry);
           const currentCountry : Country = Countries.find(c => c.name === selectedCountry)!;
           colContext.updateCountry(currentCountry);
-          console.log("current country: "+currentCountry);
-          console.log("context: "+colContext)
           let flyOpt = fly(selectedCountry);
           e_map.current!.easeTo(flyOpt as FlyToOptions);
           

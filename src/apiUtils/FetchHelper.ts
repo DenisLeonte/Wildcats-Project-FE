@@ -1,32 +1,13 @@
-import { Country } from "../types/Country";
-import { City } from "../types/City";
-import { CostOfLivingData } from "../types/CostOfLivingData";
+import { ApiCountry, Country } from "../types/Country";
+import { ApiCity, City } from "../types/City";
+import { ApiCostOfLiving, CostOfLivingData } from "../types/CostOfLivingData";
+import { SearchFlightsQuery } from "../types/SearchFlightsQuery";
+import { FlightResonseStatus } from "../types/FlightResponse";
 const BASE_COUNTRIES_URL = '/api/countries/';
 const BASE_CITIES_URL = '/api/cities/';
 const COST_OF_LIVING_URL = '/api/cost-of-living/';
-
-interface ApiCountry {
-    id: number;
-    name: string;
-    code: string;
-  }
+const FLIGHTS_URL = '/api/search/flights/';
   
-  interface ApiCity {
-    id: number;
-    name: string;
-    country: number;
-    latitude: number;
-    longitude: number;
-    main_iata_code: string;
-  }
-  
-  interface ApiCostOfLiving {
-    id: number;
-    city: number;
-    item: string;
-    price: number;
-    date: string; // Assuming the date comes as a string from the API
-  }
   type FormattedData = {
     countries: Country[];
     cities: City[];
@@ -65,38 +46,54 @@ export const fetchCostOfLivingOfCity = async (id: number) => {
 
 export const getFormattedData = async () : Promise<FormattedData> =>  {
     try {
-      const countries = await fetchCountries(); // Expected to be an array of Country
-      const cities = await fetchCities(); // Expected to be an array of { id, name, country_id, latitude, longitude }
-      const costOfLiving = await fetchCostOfLiving(); // Expected to be an array of { id, cityId, item, price, date }
+      const countries = await fetchCountries(); 
+      const cities = await fetchCities(); 
+      const costOfLiving = await fetchCostOfLiving(); 
   
-      // Create a map of countries for quick lookup
       const countryMap = new Map(countries.map((country : ApiCountry) => [country.id, country]));
   
-      // Format cities with their associated country
       const formattedCities = cities.map((city : ApiCity) => ({
         ...city,
-        country: countryMap.get(city.country) // Assuming city has country_id property
+        country: countryMap.get(city.country) 
       }));
   
-      // Create a map of formatted cities for quick lookup
       const cityMap = new Map(formattedCities.map((city: ApiCity) => [city.id, city]));
   
-      // Format the cost of living data with the associated city (including the country)
       const formattedCostOfLiving = costOfLiving.map((col : ApiCostOfLiving) => ({
         ...col,
-        city: cityMap.get(col.city) // Assuming col has cityId property
+        city: cityMap.get(col.city) 
       }));
   
       return {
-        countries,          // Array of Country
-        cities: formattedCities, // Array of City with Country embedded
-        costOfLiving: formattedCostOfLiving // Array of CostOfLivingData with City (and Country) embedded
+        countries,         
+        cities: formattedCities, 
+        costOfLiving: formattedCostOfLiving 
       };
     } catch (error) {
       console.error('Error fetching data:', error);
       throw error; // Re-throw the error to handle it where the function is called
     }
   };
+
+
+export const getFlights = async (query: SearchFlightsQuery) => {
+  const BODY = {
+    to_iata: query.to.main_iata_code,
+    from_iata: query.from.main_iata_code,
+    startDate: query.startDate.toISOString().split('T')[0],
+    endDate: query.endDate.toISOString().split('T')[0],
+    adults: query.adults,
+  }
+  const response = await fetch(FLIGHTS_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCsrfToken(),
+    },
+    body: JSON.stringify(BODY),
+  });
+  return await response.json();
+};
 
 export const getCsrfToken = () => {
     const token = document.cookie.split(';').find(c => c.trim().startsWith('csrftoken='));

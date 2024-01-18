@@ -9,21 +9,18 @@ import { useQueryContext } from '../../../contexts/QueryContext/QueryContextMana
 import OfferBox from './OfferTravelPage';
 import DualCityComboBox from '../SearchResult/DualCityComboBox';
 import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider'
-import { City } from '../../../types/City';
-import { useCostOfLivingContext } from '../../../contexts/CostOfLivingContext/CostOfLivingContextManager';
-import { Country } from '../../../types/Country';
-const EmptyCity = {id:-1, name: "", code: "", latitude: -1, longitude: -1, main_iata_code: "", country: {id: -1, name: "", code: ""}} as City;
+import { City, EMPTY_CITY } from '../../../types/City';
+import { useUserSelectionContext } from '../../../contexts/CostOfLivingContext/UserSelectionContextProvider';
+import { Country, EMPTY_COUNTRY } from '../../../types/Country';
 
 const TravelPage: React.FC = () => {
     const context = useContext(ApiContext);
     const { Cities } = context;
-    const { country } = useCostOfLivingContext();
+    const userSelectionContext = useUserSelectionContext();
     const { page, updatePage } = usePageContext();
     const { query, updateQuery } = useQueryContext();
     const { RangePicker } = DatePicker;
     const [passNo, setPassNo] = useState(1);
-    const [originCity, setoriginCity] = useState(EmptyCity);
-    const [destinationCity, setdestinationCity] = useState(EmptyCity);
     const [sDate, setSdate] = useState(dayjs());
     const [eDate, setEdate] = useState(dayjs());
     const [validInput, setValidInput] = useState(false);
@@ -50,7 +47,7 @@ const TravelPage: React.FC = () => {
     };
 
     function checkInputs() {
-        if (originCity != EmptyCity && destinationCity != EmptyCity && originCity != destinationCity && eDateSel && sDateSel) {
+        if (userSelectionContext.travelPageOriginCity != EMPTY_CITY && userSelectionContext.travelPageDestinationCity != EMPTY_CITY && userSelectionContext.travelPageOriginCity != userSelectionContext.travelPageDestinationCity && eDateSel && sDateSel) {
             setValidInput(true);
         }
         else {
@@ -61,18 +58,10 @@ const TravelPage: React.FC = () => {
 
     function handleSearchClick() {
         if (validInput) {
-            updateQuery({ from: originCity, to: destinationCity, startDate: sDate.toDate(), endDate: eDate.toDate(), adults: passNo });
+            updateQuery({ from: userSelectionContext.travelPageOriginCity, to: userSelectionContext.travelPageDestinationCity, startDate: sDate.toDate(), endDate: eDate.toDate(), adults: passNo });
             window.location.href = "/#searchresult"
             updatePage("searchRes");
         }
-    };
-
-    function handleoriginCityInput(e: any) {
-        setoriginCity(e.target.value);
-    };
-
-    function handleDestInput(e: any) {
-        setdestinationCity(e.target.value);
     };
 
     useEffect(() => {
@@ -83,10 +72,9 @@ const TravelPage: React.FC = () => {
 
     useEffect(() => {
         checkInputs();
-    }, [originCity, destinationCity, sDateSel, eDateSel, sDate, eDate]);
-    //console.log(context)
+    }, [userSelectionContext.travelPageOriginCity, userSelectionContext.travelPageDestinationCity, sDateSel, eDateSel, sDate, eDate]);
 
-    const filteredCities = country != {id : -1, name: "", code: ""} as Country ? Cities.filter(c => c.country.name === country.name) : Cities;
+    const filteredCities = userSelectionContext.country != EMPTY_COUNTRY ? Cities.filter(c => c.country.name === userSelectionContext.country.name) : Cities;
 
     return (
         <div className="travelPage">
@@ -94,7 +82,7 @@ const TravelPage: React.FC = () => {
             <div className="landing backgroundTravel">
                 <Navbar />
                 <div className="searchBar">
-                    <DualCityComboBox optionsFirst={Cities} optionsSecond={filteredCities} />
+                    <DualCityComboBox optionsFirst={Cities} optionsSecond={filteredCities} optionsFirstOnChange={userSelectionContext.setTravelPageOriginCity} optionsSecondOnChange={userSelectionContext.setTravelPageDestinationCity} />
 
                     <div className="calendar_pick">
                         <div className="searchBox" style={{ padding: "0px" }}>

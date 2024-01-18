@@ -1,9 +1,9 @@
-import { useCostOfLivingContext } from "../../../contexts/CostOfLivingContext/CostOfLivingContextManager";
+import { useUserSelectionContext } from "../../../contexts/CostOfLivingContext/UserSelectionContextProvider";
 import Navbar from "../Navbar/Navbar";
 import "../../../styles/CostOfLiving.css";
 
 const CostOfLivingPage: React.FC = () => {
-    const { country, updateCountry } = useCostOfLivingContext();
+    const { country, updateCountry } = useUserSelectionContext();
 
     return (
         <div className="costOfLivingPage">

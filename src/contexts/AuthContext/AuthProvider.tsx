@@ -36,7 +36,6 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             if (data.isAuthenticated) {
                 setIsAuthenticated(true);
                 setUserData(data.user);
-                console.log(data.user);
             } 
         })
         .catch(error => console.error('Error:', error))

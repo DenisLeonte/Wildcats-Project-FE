@@ -10,6 +10,8 @@ interface ComboBoxProps {
   onCityChange?: (value: City) => void;
 }
 
+
+
 const CityComboBox: React.FC<ComboBoxProps> = ({ options, placeholder, onCityChange }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredOptions, setFilteredOptions] = useState<City[]>([]);
@@ -23,26 +25,30 @@ const CityComboBox: React.FC<ComboBoxProps> = ({ options, placeholder, onCityCha
     );
   }, [searchTerm, options]);
 
+  const handleLiClick = (selectedCityName: string) => {
+    setSearchTerm(selectedCityName); // Update the input value
+    if (onCityChange) {
+      const selectedCity = options.find(c => c.name === selectedCityName);
+      if (selectedCity) {
+        onCityChange(selectedCity); // Trigger the onChange for the input
+      }
+    }
+  };
+
   return (
     <div className="combo-box">
       <input 
         type="text" 
         placeholder={placeholder}
         value={searchTerm}
-        onChange={(e) => {setSearchTerm(e.target.value); 
-            if (onCityChange) {
-              const selectedCity = options.find(c => c.name === e.target.value);
-              if (selectedCity) {
-                onCityChange(selectedCity);
-              }
-            }}}
+        onChange={(e) => {handleLiClick(e.target.value); }}
         onFocus={() => setShowDropdown(true)}
         onBlur={() => setTimeout(() => setShowDropdown(false), 100)}
       />
       {showDropdown && (
         <ul>
           {filteredOptions.map((option, index) => (
-            <li key={index} onClick={() => setSearchTerm(option.name)}>
+            <li key={index} onClick={() => handleLiClick(option.name)}>
               <span className={`fi fi-${option.country.code.toLowerCase()}`} style={{ marginRight: '10px' }}></span>
               {option.name}
             </li>
