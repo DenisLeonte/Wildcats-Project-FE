@@ -177,7 +177,7 @@ left:8%;
   font-family: Inter;
   font-size:14px;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   line-height: normal;
 }
 
@@ -430,4 +430,11 @@ left:8%;
   transform: translate(-50%,-50%);
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.datePicker{
+  color:inherit !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  font-weight: bold !important;
 }

@@ -5,10 +5,14 @@ import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 import dayjs from 'dayjs';
 import { set } from 'date-fns';
+import { usePageContext } from '../../../contexts/PageContext/PageManager';
+import { useQueryContext } from '../../../contexts/QueryContext/QueryContextManager';
 import OfferBox from './OfferTravelPage';
 
 
 const TravelPage: React.FC = () => {
+    const { page, updatePage } = usePageContext();
+    const {query, updateQuery} = useQueryContext();
     const { RangePicker } = DatePicker;
     const [passNo,setPassNo] = useState(1);
     const [originCity, setoriginCity] = useState("");
@@ -16,11 +20,8 @@ const TravelPage: React.FC = () => {
     const [sDate, setSdate] = useState(dayjs());
     const [eDate, setEdate] = useState(dayjs());
     const [validInput, setValidInput] = useState(false);
-    
-
-
-    var eDateSel = false;
-    var sDateSel = false;
+    const [eDateSel, setEDateSel] = useState(false);
+    const [sDateSel, setSDateSel] = useState(false);
 
 
     function setValue(value:number){
@@ -30,54 +31,52 @@ const TravelPage: React.FC = () => {
     }
     
     const handleDateChange = (dates:any, dateStrings:any) => {
-        if(dates[0] != null && dates[1] != null){
+    if(dates.length == 2){
         setSdate(dayjs(dates[0]));
         setEdate(dayjs(dates[1]));
-        eDateSel = true;
-        sDateSel = true;
-        console.log(sDate);
-        console.log(eDate);
+        setEDateSel(true)
+        setSDateSel(true);
     }else{
-        eDateSel = false;
-        sDateSel = false;
+        setEDateSel(true)
+        setSDateSel(true);
     }
     };
 
     function checkInputs(){
-        if(originCity != "" && destinationCity != "" && originCity != destinationCity && eDate && sDate){
+        if(originCity != "" && destinationCity != "" && originCity != destinationCity && eDateSel && sDateSel){
             setValidInput(true);
         }
         else{
             setValidInput(false);
         }
 
-    }
+    };
 
     function handleSearchClick(){
         if(validInput){
-            console.log("Search clicked");
-            console.log(originCity);
-            console.log(destinationCity);
-            console.log(sDate);
-            console.log(eDate);
+            updateQuery({from:originCity,to:destinationCity,startDate:sDate.toDate(),endDate:eDate.toDate(),adults:passNo});
+            window.location.href = "/#searchresult"
+            updatePage("searchRes");
         }
-    }
+    };
 
     function handleoriginCityInput(e:any){
         setoriginCity(e.target.value);
-    }
+    };
 
     function handleDestInput(e:any){
         setdestinationCity(e.target.value);
-    }
+    };
 
     useEffect(() => {
-        window.location.href="#travel";
+        if(window.location.href.includes("#travel")){
+            window.location.href="#travel";
+        }
       },[]);
 
     useEffect(() => {
         checkInputs();
-    },[originCity,destinationCity,sDate,eDate]);
+    },[originCity,destinationCity,sDateSel,eDateSel,sDate, eDate]);
 
     return (
         <div className="travelPage">
@@ -86,15 +85,15 @@ const TravelPage: React.FC = () => {
                 <div className="searchBar">
                     <div className="searchBox originDest">
                         <div className="origin">
-                            <input type="text" placeholder="origin" className="origin_input" value={originCity} onChange={handleoriginCityInput}/>
+                            <input type="text" placeholder="Origin" className="origin_input" value={originCity} onChange={handleoriginCityInput}/>
                         </div>
                         <div className="dest">
-                            <input type="text" placeholder="destination" className="origin_input" value={destinationCity} onChange={handleDestInput}/>
+                            <input type="text" placeholder="Destination" className="origin_input" value={destinationCity} onChange={handleDestInput}/>
                         </div>
                     </div>
                     <div className="calendar_pick">
                         <div className="searchBox" style={{padding:"0px"}}>
-                            <RangePicker bordered={false} onChange={handleDateChange}/>
+                            <RangePicker bordered={false} onChange={handleDateChange} className={"datePicker"}/>
                         </div>
                         
                     </div>
@@ -116,7 +115,7 @@ const TravelPage: React.FC = () => {
                         </div>
                     </div>
                     <div className="searchBox searchButt">
-                        <button className={`searchButton ${!validInput?'disable_animation':''}`} onClick={handleSearchClick} disabled={validInput}>
+                        <button className={`searchButton ${!validInput?'disable_animation':''}`} onClick={handleSearchClick} disabled={!validInput}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" className='searchIcon'>
                                 <path d="M10.5033 9.50338H9.97659L9.78992 9.32338C10.4433 8.56338 10.8366 7.57671 10.8366 6.50338C10.8366 4.11004 8.89659 2.17004 6.50326 2.17004C4.10992 2.17004 2.16992 4.11004 2.16992 6.50338C2.16992 8.89671 4.10992 10.8367 6.50326 10.8367C7.57659 10.8367 8.56326 10.4434 9.32326 9.79004L9.50326 9.97671V10.5034L12.8366 13.83L13.8299 12.8367L10.5033 9.50338ZM6.50326 9.50338C4.84326 9.50338 3.50326 8.16338 3.50326 6.50338C3.50326 4.84338 4.84326 3.50338 6.50326 3.50338C8.16326 3.50338 9.50326 4.84338 9.50326 6.50338C9.50326 8.16338 8.16326 9.50338 6.50326 9.50338Z" fill="black"/>
                             </svg>

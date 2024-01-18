@@ -46,20 +46,25 @@
     line-height: normal;
     left: 50%;
     transform: translateX(-50%);
+    width:400px;
+    padding:12px;
+}
+
+.cbButton:hover{
+    cursor: pointer;
 }
 
 .button2{
-    width:400px;
-    padding:12px;
     padding-left: 20px !important;
-    top:35%;
+    top:25%;
 }
 
 .button3{
-    width:400px;
-    padding:12px;
-    top:65%;
-    /* text-align: left !important;  */
+    top:50%;
+}
+
+.button4{
+    top:75%;
 }
 
 .svg_plane{
