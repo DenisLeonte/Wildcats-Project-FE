@@ -7,10 +7,15 @@ import fly from './flyToData';
 import { map } from 'leaflet';
 import CountryBox from '../CountryBox/CountryBox';
 import { usePageContext } from "../../../contexts/PageContext/PageManager";
+import { useUserSelectionContext } from '../../../contexts/CostOfLivingContext/UserSelectionContextProvider';
+import { ApiContext } from '../../../contexts/ApiContextProvider/ApiContextProvider';
+import { Country } from '../../../types/Country';
 
 mapboxgl.accessToken = process.env!.REACT_APP_MAPBOX_LK!;
 
 function EuroMap() {
+  const colContext = useUserSelectionContext();
+  const {Countries} = useContext(ApiContext);
   const {page, updatePage} = usePageContext();
   const mapContainer = useRef<HTMLDivElement |null>(null);
   const [showDiv,setShowDiv] = useState<boolean>(false);
@@ -67,9 +72,11 @@ function EuroMap() {
           getPosZoom(e);
           selectedCountry = e.features![0].properties!.name_en;
           setCountry(selectedCountry);
+          const currentCountry : Country = Countries.find(c => c.name === selectedCountry)!;
+          colContext.updateCountry(currentCountry);
           let flyOpt = fly(selectedCountry);
           e_map.current!.easeTo(flyOpt as FlyToOptions);
-          console.log(mapContainer.current!.offsetWidth,mapContainer.current!.offsetHeight);
+          
           if(mapContainer.current!.offsetWidth - animatedWidth >= 50){
             
             document.getElementById("map-container")!.style.width = 'calc(100% - 450px - 2*7%)';

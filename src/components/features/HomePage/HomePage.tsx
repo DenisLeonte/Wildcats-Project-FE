@@ -3,8 +3,8 @@ import ReactFullpage, { fullpageApi } from '@fullpage/react-fullpage';
 import "../../../styles/HomePage.css";
 import EuroMap from '../EuroMap/EuroMap';
 import Navbar from '../Navbar/Navbar';
+import { useAuth } from '../../../contexts/AuthContext/AuthProvider';
 
-//Asta e o magarie foarte mare, am furat definitia din codul sursa de la fullpage.js ca de altfel nu ma lasa but hey it works
 type Credits = {
   enabled?: boolean,
   label?: string,
@@ -12,6 +12,7 @@ type Credits = {
 }
 
 function HomePage(){
+  
   const anchors = ["landing","map","page3"];
   const interval = 5000;
   const geoUrl = "../assets/features.json"

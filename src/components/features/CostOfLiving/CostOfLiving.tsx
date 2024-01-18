@@ -1,14 +1,14 @@
-import { useCostOfLivingContext } from "../../../contexts/CostOfLivingContext/CostOfLivingContextManager";
+import { useUserSelectionContext } from "../../../contexts/CostOfLivingContext/UserSelectionContextProvider";
 import Navbar from "../Navbar/Navbar";
 import "../../../styles/CostOfLiving.css";
 
 const CostOfLivingPage: React.FC = () => {
-    const { country, updateCountry } = useCostOfLivingContext();
+    const { country, updateCountry } = useUserSelectionContext();
 
     return (
         <div className="costOfLivingPage">
             <Navbar/>
-            <h1 className="COLTitle">Cost of Living for {country}</h1>
+            <h1 className="COLTitle">Cost of Living for {country.name}</h1>
             <div className="flexCOLgrid">
                 <div className="flexCOLrow" style={{height:"352px"}}>
                     <div className="COLBOX1 COLBOX">
