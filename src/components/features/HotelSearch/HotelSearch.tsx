@@ -3,7 +3,7 @@ import "../../../styles/HotelSearch.css";
 import { useEffect, useState } from "react";
 import { DatePicker, Space } from 'antd';
 import dayjs from "dayjs";
-import HotelBox from "./HotelData";
+import HotelBox from "./HotelBox";
 
 export const HotelSearch:React.FC = () =>{
 
@@ -38,16 +38,17 @@ export const HotelSearch:React.FC = () =>{
                 <RangePicker bordered={true} onChange={handleDateChange} className={"datePicker"}/>
             </div>
             <div className="hotelResultList"><div className="resultsFound"> Found 40 properties </div>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
-                <HotelBox  hotelName="Ibis Hotel" reviewName="Excelent" reviewNumber="140 reviews" score="9,5" price="300€"></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+                <HotelBox  hotelName="Ibis Hotel" reviewName="Exceptional" reviewNumber="140 reviews" score="9,5" price="300€" duration="3 nights" numberAdults="adulti" bookButton="Book now" ></HotelBox>
+        
             </div>
         </div>
     );
