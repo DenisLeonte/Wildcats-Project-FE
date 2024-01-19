@@ -95,7 +95,6 @@ const TravelPage: React.FC = () => {
                         <div className="searchBox" style={{padding:"0px"}}>
                             <RangePicker bordered={false} onChange={handleDateChange} className={"datePicker"}/>
                         </div>
-                        
                     </div>
                     <div className="searchBox passengerNum"> 
                         <div className="passengerPickContent">
