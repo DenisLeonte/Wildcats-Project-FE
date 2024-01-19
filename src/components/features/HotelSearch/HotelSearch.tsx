@@ -73,7 +73,6 @@ export const HotelSearch:React.FC = () =>{
                                 <path d="M12 4.5L10.59 5.91L16.17 11.5H4V13.5H16.17L10.59 19.09L12 20.5L20 12.5L12 4.5Z" fill="white"/>
                             </svg>  
                     </button>
-                    </div>
                 </div>
             </div>
             <div className="hotelResultList"><div className="resultsFound"> Found 40 properties </div>
