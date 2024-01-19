@@ -20,6 +20,8 @@
 
 }
 
+
+
 .resultList{
     margin-top:calc(100vh * 0.35);
     display:flex;
@@ -40,6 +42,7 @@
     background: var(--AlbastruDeschis, #7DA6B2);
     position: absolute;
 }
+
 
 .searchLogo{
     height:70% !important;
@@ -104,6 +107,10 @@
     border:0;
     background:transparent;
     padding:0;
+}
+
+.arrowBut:hover{
+    cursor: pointer;
 }
 
 .dateBoxSR{

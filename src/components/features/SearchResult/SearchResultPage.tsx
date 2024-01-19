@@ -170,6 +170,7 @@ export const SearchResultPage: React.FC = () => {
                     :
                     <></>}
             </div>
+            <img src={images("./ad_space_horizontal.jpg")} alt="" className="adSpaceHorizontal" style={{marginLeft:0}}/>
         </div>
     )
 }

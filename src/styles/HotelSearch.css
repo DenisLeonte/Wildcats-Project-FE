@@ -1,0 +1,248 @@
+@import "fonts.css";
+
+
+.hsBackground{
+    background: var(--SageDeschis, #B2C8BA);
+    min-height: 100vh;
+    width: 100vw;
+    position:relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap:70px
+}
+
+.hotelSearchSelectors{
+    top:calc(100vh * 0.2);
+    left:5%;
+    width:1152px;
+    height:38px;
+    padding:16px;
+    border: 3px solid var(--text-dark-light, #9D9D9D);
+    background: var(--AlbastruDeschis, #7DA6B2);
+    position: absolute;
+    font-family: Roboto;
+    display: flex;
+    flex-direction: row;
+}
+
+.VladBox{
+    margin-left:140px;
+    width:200px;
+    height: 35px;
+    background-color: white;
+    border: 1px solid var(--text-dark-light, #9D9D9D);
+}
+
+.hotelSearchBut{
+    width: 145px;
+    height: 33px;
+    align-items: center;
+    border-radius: 6px;
+    border: 1px solid var(--text-dark-light, #9D9D9D);
+    background: var(--VerdeScris, #004006);
+    color: #FFF;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    align-items: center;
+    margin-left:100px;
+    position: absolute;
+}
+
+.hotelSearchBut>p{
+    position:relative;
+    top:-25%;
+    margin-top:0;
+    display:inline;
+}
+
+.hotelSearchBut>svg{
+    position:relative;
+    padding-top:3px;
+}
+
+.datePicker{
+    background-color: white;
+}
+
+.hotelBox{
+    margin-left: 100px;
+}
+
+.hotelResultList{
+    margin-top:calc(100vh * 0.4);
+    margin-left:50%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap:nowrap;
+    gap:40px;
+    align-items: center;
+    min-width: calc(100vw*0.7);
+    margin-bottom: 100px;
+    background-color:var(--SageDeschis, #B2C8BA);;
+    left:50%;
+    transform:translateX(-50%)
+}
+
+.resultsFound{
+    width: 100%;
+    font-family: Roboto;
+    font-size: 24px;
+    color:#004006;
+    text-align: left;
+    font-weight: 700;
+}
+.HotelBox{
+    border-radius: 20px;
+    background: #FFF;
+    display: flex;
+    width: 916px;
+    height: 94px;
+    padding: 18px 30px 14.604px 29px;
+    justify-content: flex-start;
+    flex-shrink: 0;
+    gap: 50px;
+    align-items: center;
+}
+
+.HotelName{
+color: #000;
+text-align: center;
+font-family: "Crimson Text", serif;
+font-size: 30px;
+margin: 45px 10px 45px 10px;
+width: 150px;
+flex-direction: column;
+}
+
+.scoreReviewBox{
+    display: flex;
+    flex-direction: row;
+}
+.reviewBox{
+    display:flex;
+    flex-direction: column;
+}
+
+.reviewClasification{
+    width: 150px;
+    flex: 1 1;
+    color: #000;
+    text-align: center;
+    font-family: "Crimson Text", serif;
+    font-size: 24px;
+    font-weight: 700;
+    order: 1;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.reviewsNumber{
+color: #000;
+text-align: center;
+font-family: "Crimson Text", serif;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+width: 100px;
+flex:1;
+order:2;
+margin-left: 40px;
+}
+
+.score{
+display: flex;
+width: 40px;
+height: 47px;
+padding: 6px 17px;
+justify-content: center;
+align-items: center;
+flex-shrink: 0;
+border-radius: 16px;
+background: #728D7C;
+color: #000;
+text-align: center;
+font-family: "Crimson Text", serif;
+font-size: 24px;
+font-weight: 700;
+margin-left: auto;
+}
+
+.priceAndDetails{
+    display: flex;
+    flex-direction: column;
+}
+.priceBooking{
+color: #000;
+text-align: center;
+font-family: "Crimson Text", serif;
+font-size: 24px;
+font-style: normal;
+font-weight: 700;
+width: 117px;
+height: 50px;
+order:1;
+flex: 1;
+}
+
+.durationTrip{
+    color: #000;
+    text-align: center;
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    font-weight: 400;
+    order:2;
+    flex: 1;
+}
+
+.numberAdults{
+    color: #000;
+    text-align: center;
+    font-family: "Crimson Text", serif;
+    font-size: 16px;
+    font-weight: 400;
+    order:3;
+    flex: 1;
+}
+
+.bookButton{
+width: 130px;
+height: 50px;
+padding: 4px 10px;
+justify-content: center;
+align-items: center;
+background-color: #2C5730E0;
+display: flex;
+flex-direction: column;
+border-radius: 15px;
+color: #FFF;
+text-align: center;
+font-family: "Crimson Text", serif;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+margin-left: 40px;
+position: relative;
+overflow: hidden;
+
+}
+.bookButton::after{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 50%;
+      right: 10px; 
+      width: 10px;
+      height: 10px; 
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="25" height="24" viewBox="0 0 25 24" fill="none"><path d="M10.375 17L15.375 12L10.375 7V17Z" fill="black"/></svg>') center no-repeat;
+      transform: translateY(-50%);
+}   
+
+.bookButton:hover{
+    background-color: #728D7C; 
+      color: #fff;
+      border-color: #fff;
+}
+
