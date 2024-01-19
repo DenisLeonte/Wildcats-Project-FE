@@ -20,6 +20,7 @@
     border: 3px solid var(--text-dark-light, #9D9D9D);
     background: var(--AlbastruDeschis, #7DA6B2);
     position: absolute;
+    font-family: Roboto;
 }
 
 .datePicker{
