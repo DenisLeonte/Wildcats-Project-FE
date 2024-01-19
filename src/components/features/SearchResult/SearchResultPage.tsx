@@ -107,6 +107,7 @@ export const SearchResultPage: React.FC = () => {
                 <Result takeOffHour='20:10' landingHour='23:10' takeOffLocation='CLJ' landingLocation='BER' price={80} airline='wizz'/>
                 <Result takeOffHour='20:10' landingHour='23:10' takeOffLocation='CLJ' landingLocation='BER' price={80} airline='wizz'/>
             </div>
+            <img src={images("./ad_space_horizontal.jpg")} alt="" className="adSpaceHorizontal" style={{marginLeft:0}}/>
         </div>
     )
 }
