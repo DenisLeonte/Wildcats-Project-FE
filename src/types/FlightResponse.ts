@@ -10,7 +10,7 @@ export interface FlightResponse {
     stops_airports: string[];
     no_stops: number;
     departure_date: string;
-    return_date: string;
+    arrival_date: string;
     currency: string;
 }
 
@@ -26,7 +26,7 @@ export const EMPTY_FLIGHT_RESPONSE: FlightResponse = {
     stops_airports: [],
     no_stops: 0,
     departure_date: "",
-    return_date: "",
+    arrival_date: "",
     currency: "",
 }
 

@@ -84,10 +84,10 @@ function Navbar(){
             {!dev_auth && (
               <>
                 <a>
-                  <div className="nav_button sign_in_but">Sign In</div>
+                  <div onClick={() => { window.location.href = '/login'; }} className="nav_button sign_in_but">Sign In</div>
                 </a>
                 <a>
-                  <div className="nav_button sign_up_but">Sign Up</div>
+                  <div onClick={() => { window.location.href = '/signup'; }} className="nav_button sign_up_but">Sign Up</div>
                 </a>
               </>
             )}

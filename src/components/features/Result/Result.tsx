@@ -26,38 +26,39 @@ const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocati
     const [isRedirecting, setIsRedirecting] = React.useState(false);
 
     const renderStopsInfo = () => {
-        if (stops > 0) {
-            const stopoverLabel = [takeOffLocation, ...stopoverAirports!].join(' -> ');
-            return (
-                <>
-                    <div className="stopsLabel">
+        const stopoverLabel = [takeOffLocation, ...stopoverAirports!].join(' -> ');
+        return (
+            <>
+                <div className="stopsLabel">
+                    {stops > 0 ?
                         <p className="stopsTxt">Stops: {stops}</p>
+                        :
+                        <p className="stopsTxt">Direct</p>
+                    }
+                </div>
+                {stopoverLabel && (
+                    <div className="stopoverAirports">
+                        <p className="stopsTxt">Via</p>
+                        <p className="stopsVia">{stopoverLabel}</p>
                     </div>
-                    {stopoverLabel && (
-                        <div className="stopoverAirports">
-                            <p className="stopsTxt">Via</p>
-                            <p className="stopsVia">{stopoverLabel}</p>
-                        </div>
-                    )}
-                </>
-            );
-        }
-        return null;
+                )}
+            </>
+        );
     };
 
-    const redirectToAgency = async (url: number,  search_id: string) => {
+    const redirectToAgency = async (url: number, search_id: string) => {
         setIsRedirecting(true);
 
         const data = await getFlightDetails(search_id, url);
-            console.log(data);
+        console.log(data);
         if (data) {
-            
+
             window.open(data.url);
         }
         setIsRedirecting(false);
     }
 
-    const handleOnClick = (url: number,  search_id: string) => {
+    const handleOnClick = (url: number, search_id: string) => {
         redirectToAgency(url, search_id);
     }
 
@@ -69,7 +70,7 @@ const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocati
                         <h1>Redirecting...</h1>
                     </Popup>
                     <div>
-                        <img src={AIRLINE_LOGO_URL+'80/80/'+airline+'.png'} alt={airline} className="airlineLogo" width={80} />
+                        <img src={AIRLINE_LOGO_URL + '80/80/' + airline + '.png'} alt={airline} className="airlineLogo" width={80} />
                     </div>
                     <div className="travelVisual">
                         <div className="takeOffH">

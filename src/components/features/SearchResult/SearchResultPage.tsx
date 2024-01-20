@@ -15,13 +15,15 @@ const InitialResultState: FlightResponse[] | FlightResponseError[] = [];
 function countDaysBetweenDates(dateStr1: string, dateStr2: string): number {
     const date1 = new Date(dateStr1);
     const date2 = new Date(dateStr2);
-
+    console.log(date1);
+    console.log(date2);
     // Calculate the difference in milliseconds
     const differenceInTime = Math.abs(date2.getTime() - date1.getTime());
 
     // Convert the difference from milliseconds to days
     const differenceInDays = differenceInTime / (1000 * 3600 * 24);
 
+    console.log(differenceInDays);
     return differenceInDays;
 }
 
@@ -71,7 +73,7 @@ export const SearchResultPage: React.FC = () => {
             try {
                 const data = await getFlights(query);
                 console.log(data);
-                if (data) {
+                if (!data.error) {
                     setSearch_id(data.search_id);
                     setFlights(data.proposals);
                     setSearchStatus(FlightResonseStatus.SUCCESS);
@@ -151,7 +153,7 @@ export const SearchResultPage: React.FC = () => {
                                     <Result takeOffHour={(flight as FlightResponse).local_start_time} landingHour={(flight as FlightResponse).local_end_time}
                                         takeOffLocation={(flight as FlightResponse).origin_airport} landingLocation={((flight as FlightResponse).destination_airport)}
                                         airline={(flight as FlightResponse).airline} price={(flight as FlightResponse).price} stops = {(flight as FlightResponse).no_stops} 
-                                        stopoverAirports={(flight as FlightResponse).stops_airports} dayOffset={countDaysBetweenDates((flight as FlightResponse).departure_date, (flight as FlightResponse).return_date)}
+                                        stopoverAirports={(flight as FlightResponse).stops_airports} dayOffset={countDaysBetweenDates((flight as FlightResponse).departure_date, (flight as FlightResponse).arrival_date)}
                                         url = {(flight as FlightResponse).url} search_id={search_id} />
                                 ));
                             default:
