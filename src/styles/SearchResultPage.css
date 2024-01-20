@@ -31,6 +31,10 @@
     margin-bottom: 100px;
 }
 
+.resultList > .resultList{
+    margin-top:0;
+}
+
 
 .srSearchBox{
     top:calc(100vh * 0.2);
