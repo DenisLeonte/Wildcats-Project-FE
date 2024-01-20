@@ -19,7 +19,7 @@ function CountryBox({ selectedCountry }: CountryBoxProps) {
     useEffect(()=>{
         setdevAuth(isAuthenticated);
         // set this to false if you want to test the not logged function
-    },[])
+    },[isAuthenticated])
 
     function switchPage(){
         updatePage("travel");
@@ -27,14 +27,14 @@ function CountryBox({ selectedCountry }: CountryBoxProps) {
     }
 
     function handleCOLClick(){
-        if(dev_auth){
+        if(isAuthenticated){
             updatePage("costOfLiving");
             window.location.href = "/#costOfLiving";
         }
     }
 
     function hotelView(){
-        if(dev_auth){
+        if(isAuthenticated){
             updatePage("searchHotels")
         }
     }
@@ -55,13 +55,13 @@ function CountryBox({ selectedCountry }: CountryBoxProps) {
                     </defs>
                 </svg>
                 </button>
-                <button className={`button3 cbButton ${dev_auth? '':'disabled_button'}`} onClick={handleCOLClick} disabled = {dev_auth}>Cost of living for <br/>{selectedCountry}
+                <button className={`button3 cbButton ${isAuthenticated? '':'disabled_button'}`} onClick={handleCOLClick} disabled = {!isAuthenticated}>Cost of living for <br/>{selectedCountry}
                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="30" viewBox="0 0 35 30" fill="none" className='svg_plane'>
                     <path d="M27.3 12.25V5.625H23.1V8.875L17.5 4.375L3.5 15.625H7.7V25.625H16.1V18.125H18.9V25.625H27.3V15.625H31.5L27.3 12.25ZM24.5 23.125H21.7V15.625H13.3V23.125H10.5V13.3625L17.5 7.7375L24.5 13.3625V23.125Z" fill="#004006"/>
                     <path d="M14.7 13.125H20.3C20.3 11.75 19.04 10.625 17.5 10.625C15.96 10.625 14.7 11.75 14.7 13.125Z" fill="#004006"/>
                 </svg>
                 </button>
-                <button className={`button4 cbButton ${dev_auth? '':'disabled_button'}`} onClick={hotelView} disabled={dev_auth}>Book a hotel to <br/>{selectedCountry}</button>
+                <button className={`button4 cbButton ${isAuthenticated? '':'disabled_button'}`} onClick={hotelView} disabled={!isAuthenticated}>Book a hotel to <br/>{selectedCountry}</button>
             </div>
         </div>
     );
