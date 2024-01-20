@@ -4,12 +4,9 @@ import "../../../styles/SearchResultPage.css";
 import { addDays, subDays } from 'date-fns';
 import { useQueryContext } from '../../../contexts/QueryContext/QueryContextManager';
 import Result from '../Result/Result';
-import CityComboBox from './CityComboBox';
 import { getFlights } from '../../../apiUtils/FetchHelper';
 import { FlightResonseStatus, FlightResponse, FlightResponseError } from '../../../types/FlightResponse';
-import { da } from 'date-fns/locale';
 import { format, utcToZonedTime } from 'date-fns-tz';
-import { Convert, Converter } from "easy-currencies";
 
 const fetchingDataEmptyArrayPlaceholder = Array(10).fill(null);
 

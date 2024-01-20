@@ -67,6 +67,15 @@
     top:75%;
 }
 
+.disabled_button{
+    background-color: gray!important;
+    color: white!important;
+}
+
+.disabled_button:hover{
+    cursor: default !important;
+}
+
 .svg_plane{
     position: absolute;
     right:3%;

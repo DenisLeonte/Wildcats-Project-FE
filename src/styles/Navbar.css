@@ -1,15 +1,15 @@
 @import 'fonts.css';
 
 .navbar{
-    display: flex;
+    display:inline-block;
     position:absolute;
     top:0;
     z-index:5;
     overflow:hidden;
     height: 106px;
-    width: 100%;
+    width: 100vw;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 
 .back_icon{
@@ -27,28 +27,6 @@ cursor: pointer;
 text-align: center;
 margin:22px 50px;
 cursor: pointer;
-}
-
-.search_bar{    
-height:16px;
-display: flex;
-width: 510px;
-padding: 16px;
-margin-left:150px;
-align-items: center;
-gap: 10px; 
-border-radius: 4px;
-background: url("../../assets/Icon\ pack.svg") 97% 50% no-repeat;
-background-color:white;
-color: var(--Grey-input-text, #ABABAB);
-/* Text */
-font-family: Inter;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: normal;
-border:0;
-margin-right:auto;
 }
 
 .sign_in_but{
@@ -97,6 +75,57 @@ cursor: pointer;
   fill:white;
 }
 
-.travelPage .search_bar{
-  display: none;
+
+.User_Container{
+  color: var(--VerdeScris, #004006);
+  text-align: center;
+  font-family: Inter;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  background-color: #FFF;
+  border:#004006 solid;
+  border-radius: 4px;
+  border-width: 2px;
+  display: flex;
+  height: 56px;
+  padding: 0 30px;
+  margin-left: min(auto, 20px);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right:50px;
+}
+
+.User_Container:hover{
+  cursor:default;
+}
+
+.navbar_cont_1{
+  display: flex;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:5;
+  overflow:hidden;
+  height: 106px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.navbar_cont_2{
+  display: flex;
+  position:absolute;
+  right:0;
+  top:0;
+  z-index:5;
+  overflow:hidden;
+  height: 106px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbar_wrapper{
+  position:relative;
 }
