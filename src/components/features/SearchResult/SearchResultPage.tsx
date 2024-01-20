@@ -158,7 +158,7 @@ export const SearchResultPage: React.FC = () => {
                                 return <></>;
                         }
                     })()}
-
+                    {/* <Result takeOffHour='00:00' landingHour='00:00' takeOffLocation='ROMA' landingLocation='ROMA' price={100} airline="Wizz" stops={0} url={1} search_id='ok'/> */}
                 </div>
 
 

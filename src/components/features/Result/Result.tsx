@@ -62,12 +62,12 @@ const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocati
     }
 
     return (
-        <div className="result">
+        <div>
             {(airline != '') ?
-                <>
+                <><div className="result">
                     <Popup open={isRedirecting} modal closeOnDocumentClick={false} className="custom-popup">
-                <h1>Redirecting...</h1>
-            </Popup>
+                        <h1>Redirecting...</h1>
+                    </Popup>
                     <div>
                         <img src={AIRLINE_LOGO_URL+'80/80/'+airline+'.png'} alt={airline} className="airlineLogo" width={80} />
                     </div>
@@ -94,9 +94,10 @@ const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocati
                     </div>
                     {renderStopsInfo()}
                     <div className="priceBut">
-                        <p className={"priceTxt"}>€{price}</p>
-                        <button onClick={() => handleOnClick(url, search_id)} className="selectBut"><p>select</p></button>
+                            <p className={"priceTxt"}>€{price}</p>
+                            <button onClick={() => handleOnClick(url, search_id)} className="selectBut"><p>select</p></button>
                     </div>
+                </div>
                 </>
                 :
                 <p className='priceTxt'>{errorText}</p>

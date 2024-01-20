@@ -2,6 +2,7 @@
 
 .result{
     border-radius: 20px;
+    position:relative;
     background: #FFF;
     display: flex;
     width: 1300px;
@@ -123,4 +124,12 @@
     font-weight: 700;
     line-height: normal;
     margin:0;
+}
+
+.priceBut{
+    display:flex;
+    flex-direction: column; 
+    width:100px;
+    position:absolute;
+    right:5%;
 }
