@@ -7,6 +7,7 @@ import { QueryProvider } from "./contexts/QueryContext/QueryContextManager";
 import { UserSelectionContextProvider } from "./contexts/CostOfLivingContext/UserSelectionContextProvider";
 import { ApiContextProvider } from "./contexts/ApiContextProvider/ApiContextProvider";
 import { AuthProvider } from "./contexts/AuthContext/AuthProvider";
+import HotelSearchWrapper from "./components/features/HotelSearch/HotelSearchWrapper";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <TravelPageWrapper />
               <SearchResultPageWrapper />
               <CostOfLivingWrapper />
+              <HotelSearchWrapper />
             </UserSelectionContextProvider>
           </QueryProvider>
         </PageProvider>
