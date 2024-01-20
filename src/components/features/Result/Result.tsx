@@ -1,5 +1,7 @@
 import React from 'react';
 import '../../../styles/Result.css';
+import { getFlightDetails } from '../../../apiUtils/FetchHelper';
+import { Popup } from 'reactjs-popup';
 const AIRLINE_LOGO_URL = 'http://pics.avs.io/';
 
 type ResultProps = {
@@ -10,14 +12,62 @@ type ResultProps = {
     price: number;
     airline: string;
     errorText?: string;
+    stops: number;
+    stopoverAirports?: string[];
+    takeOffDate?: string;
+    landingDate?: string;
+    dayOffset?: number;
+    url: number;
+    search_id: string;
 };
 
-const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocation, landingLocation, price, airline, errorText }) => {
+const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocation, landingLocation, price, airline, errorText, stops, stopoverAirports, takeOffDate, landingDate, dayOffset, url, search_id }) => {
     const images = require.context('../../../../assets/airlines', true);
+    const [isRedirecting, setIsRedirecting] = React.useState(false);
+
+    const renderStopsInfo = () => {
+        if (stops > 0) {
+            const stopoverLabel = [takeOffLocation, ...stopoverAirports!].join(' -> ');
+            return (
+                <>
+                    <div className="stopsLabel">
+                        <p className="stopsTxt">Stops: {stops}</p>
+                    </div>
+                    {stopoverLabel && (
+                        <div className="stopoverAirports">
+                            <p className="stopsTxt">Via</p>
+                            <p className="stopsVia">{stopoverLabel}</p>
+                        </div>
+                    )}
+                </>
+            );
+        }
+        return null;
+    };
+
+    const redirectToAgency = async (url: number,  search_id: string) => {
+        setIsRedirecting(true);
+
+        const data = await getFlightDetails(search_id, url);
+            console.log(data);
+        if (data) {
+            
+            window.open(data.url);
+        }
+        setIsRedirecting(false);
+    }
+
+    const handleOnClick = (url: number,  search_id: string) => {
+        redirectToAgency(url, search_id);
+    }
+
     return (
         <div className="result">
             {(airline != '') ?
                 <>
+                    <Popup open={isRedirecting} modal closeOnDocumentClick={false} className="custom-popup">
+                <h1>Redirecting...</h1>
+            </Popup>
                     <div>
                         <img src={AIRLINE_LOGO_URL+'80/80/'+airline+'.png'} alt={airline} className="airlineLogo" width={80} />
                     </div>
@@ -38,13 +88,14 @@ const Result: React.FC<ResultProps> = ({ takeOffHour, landingHour, takeOffLocati
                             </svg>
                         </div>
                         <div className="landingH">
-                            <p className="hourFont">{landingHour}</p>
+                            <p className="hourFont">{landingHour} {(dayOffset && dayOffset != 0) ? (" +" + dayOffset) : ''}</p>
                             <p className="destFont" style={{ textAlign: "left" }}>{landingLocation}</p>
                         </div>
                     </div>
+                    {renderStopsInfo()}
                     <div className="priceBut">
                         <p className={"priceTxt"}>€{price}</p>
-                        <button className="selectBut"><p>select</p></button>
+                        <button onClick={() => handleOnClick(url, search_id)} className="selectBut"><p>select</p></button>
                     </div>
                 </>
                 :

@@ -7,6 +7,7 @@ const BASE_COUNTRIES_URL = '/api/countries/';
 const BASE_CITIES_URL = '/api/cities/';
 const COST_OF_LIVING_URL = '/api/cost-of-living/';
 const FLIGHTS_URL = '/api/search/flights/';
+const HOTELS_URL = '/api/search/hotels/';
   
   type FormattedData = {
     countries: Country[];
@@ -101,4 +102,57 @@ export const getCsrfToken = () => {
         return token.split('=')[1];
     }
     return '';
+}
+
+export const getHotels = async (city : City, startDate: Date, endDate: Date, adults : number) => {
+  const response = await fetch(HOTELS_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCsrfToken(),
+    },
+    body: JSON.stringify({
+      'city_iata' : city.main_iata_code,
+      'arrival_date': startDate.toISOString().split('T')[0],
+      'departure_date': endDate.toISOString().split('T')[0],
+      'adults': adults,
+    })
+  });
+  const jsonresp = await response.json();
+  return jsonresp.data.hotels;
+}
+export const getHotelDetails = async (hotel_id : number, arrival_date : Date, departure_date: Date, adults: number) => {
+  const response = await fetch(HOTELS_URL + 'details/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCsrfToken(),
+    },
+    body: JSON.stringify( {
+      'hotel_id': hotel_id,
+      'arrival_date': arrival_date.toISOString().split('T')[0],
+      'departure_date': departure_date.toISOString().split('T')[0],
+      'adults': adults,
+    }),
+  });
+  const jsonresp = await response.json();
+  console.log(jsonresp);
+  return jsonresp.data;
+}
+
+export const getFlightDetails = async (search_id : string, url: number) => {
+  const response = await fetch(FLIGHTS_URL + 'details/', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': getCsrfToken(),
+    },
+    body: JSON.stringify({
+      'search_id': search_id,
+      'url': url,
+    }),
+  });
+  const jsonresp = await response.json();
+  console.log(jsonresp);
+  return jsonresp;
 }

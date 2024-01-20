@@ -9,28 +9,26 @@ import { getFlights } from '../../../apiUtils/FetchHelper';
 import { FlightResonseStatus, FlightResponse, FlightResponseError } from '../../../types/FlightResponse';
 import { da } from 'date-fns/locale';
 import { format, utcToZonedTime } from 'date-fns-tz';
+import { Convert, Converter } from "easy-currencies";
 
 const fetchingDataEmptyArrayPlaceholder = Array(10).fill(null);
 
 const InitialResultState: FlightResponse[] | FlightResponseError[] = [];
 
-const formatDateTime = (dateTimeString: string, minuteOffset? : number): string => {
-    if (!dateTimeString || isNaN(Date.parse(dateTimeString))) {
-        return 'Invalid Date';
-    }
+function countDaysBetweenDates(dateStr1: string, dateStr2: string): number {
+    const date1 = new Date(dateStr1);
+    const date2 = new Date(dateStr2);
 
-    const date = new Date(dateTimeString);
-    const utcDate = new Date(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate(), date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds());
-    
-    // Adjust for timezone offset
-    const timezoneOffsetMinutes = date.getTimezoneOffset() - utcDate.getTimezoneOffset();
-    utcDate.setMinutes(utcDate.getMinutes() + timezoneOffsetMinutes + (minuteOffset || 0));
+    // Calculate the difference in milliseconds
+    const differenceInTime = Math.abs(date2.getTime() - date1.getTime());
 
-    const hours = utcDate.getHours().toString().padStart(2, '0');
-    const minutes = utcDate.getMinutes().toString().padStart(2, '0');
+    // Convert the difference from milliseconds to days
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
 
-    return `${hours}:${minutes}`;
-};
+    return differenceInDays;
+}
+
+
 
 export const SearchResultPage: React.FC = () => {
     const images = require.context('../../../../assets/', true);
@@ -42,6 +40,10 @@ export const SearchResultPage: React.FC = () => {
     const [dataReceived, setDataReceived] = useState(false);
     const [flights, setFlights] = useState(InitialResultState);
     const [searchStatus, setSearchStatus] = useState(FlightResonseStatus.NOT_SET);
+    const [search_id, setSearch_id] = useState("");
+    const [convertedCurrency, setConvertedCurrency] = useState(0);
+
+    
 
     const increaseFromDay = () => {
         if (fromDate.getTime() < toDate.getTime())
@@ -70,16 +72,12 @@ export const SearchResultPage: React.FC = () => {
         setToDate(new Date(query.endDate));
         const fetchData = async () => {
             try {
-                const { data } = await getFlights(query);
+                const data = await getFlights(query);
                 console.log(data);
                 if (data) {
-                    if (Array.isArray(data)) {
-                        setFlights(data);
-                        setSearchStatus(FlightResonseStatus.SUCCESS);
-                    } else {
-                        setFlights([data]); 
-                        setSearchStatus(FlightResonseStatus.ERROR);
-                    }
+                    setSearch_id(data.search_id);
+                    setFlights(data.proposals);
+                    setSearchStatus(FlightResonseStatus.SUCCESS);
                 } else {
                     setSearchStatus(FlightResonseStatus.ERROR);
                 }
@@ -147,15 +145,17 @@ export const SearchResultPage: React.FC = () => {
                     {(() => {
                         switch (searchStatus) {
                             case FlightResonseStatus.NOT_SET:
-                                return fetchingDataEmptyArrayPlaceholder.map((_, index) => (<Result takeOffHour='' landingHour='' takeOffLocation='' landingLocation='' airline='' price={0} errorText='Loading flights...'/>))
+                                return fetchingDataEmptyArrayPlaceholder.map((_, index) => (<Result url ={0} search_id='' takeOffHour='' landingHour='' takeOffLocation='' landingLocation='' airline='' price={0} stops ={0} errorText='Loading flights...'/>))
                             case FlightResonseStatus.ERROR:
-                                return flights.map((flight) => (<Result takeOffHour='' landingHour='' takeOffLocation='' landingLocation='' airline='' price={0} errorText={(flight as FlightResponseError).error} />));
+                                return flights.map((flight) => (<Result url ={0} search_id='' takeOffHour='' landingHour='' takeOffLocation='' landingLocation='' airline='' price={0} errorText={(flight as FlightResponseError).error} stops ={0}/>));
                             case FlightResonseStatus.SUCCESS:
-
+                                
                                 return flights.map((flight) => (
-                                    <Result takeOffHour={formatDateTime((flight as FlightResponse).departure_at)} landingHour={formatDateTime((flight as FlightResponse).departure_at, (flight as FlightResponse).duration)}
+                                    <Result takeOffHour={(flight as FlightResponse).local_start_time} landingHour={(flight as FlightResponse).local_end_time}
                                         takeOffLocation={(flight as FlightResponse).origin_airport} landingLocation={((flight as FlightResponse).destination_airport)}
-                                        airline={(flight as FlightResponse).airline} price={(flight as FlightResponse).price} />
+                                        airline={(flight as FlightResponse).airline} price={(flight as FlightResponse).price} stops = {(flight as FlightResponse).no_stops} 
+                                        stopoverAirports={(flight as FlightResponse).stops_airports} dayOffset={countDaysBetweenDates((flight as FlightResponse).departure_date, (flight as FlightResponse).return_date)}
+                                        url = {(flight as FlightResponse).url} search_id={search_id} />
                                 ));
                             default:
                                 return <></>;
@@ -166,7 +166,7 @@ export const SearchResultPage: React.FC = () => {
 
 
                 {!dataReceived ? fetchingDataEmptyArrayPlaceholder.map((_, index) => (
-                    <Result takeOffHour='' landingHour='' takeOffLocation='' landingLocation='' airline='' price={0} />))
+                    <Result takeOffHour='' landingHour='' takeOffLocation='' landingLocation='' airline='' price={0} stops ={0} url ={0} search_id='' />))
                     :
                     <></>}
             </div>

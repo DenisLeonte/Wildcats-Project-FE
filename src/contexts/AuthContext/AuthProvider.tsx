@@ -44,9 +44,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
     if (loading) return <div>Loading...</div>;
 
-    if(!isAuthenticated) {
-        return <h1>NOT LOGGED IN</h1>;
-    }
+    // if(!isAuthenticated) {
+    //     return <h1>NOT LOGGED IN</h1>;
+    // }
     return (
         <AuthContext.Provider value={{ isAuthenticated, userData, CSRFToken }}>
             {children}

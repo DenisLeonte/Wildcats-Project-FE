@@ -1,35 +1,33 @@
 export interface FlightResponse {
-    flight_number: string;
-    link: string;
+    url: number;
     origin_airport: string;
     destination_airport: string;
-    departure_at: string;
+    local_start_time: string;
+    local_end_time: string
     airline: string;
-    destination: string;
-    origin: string;
     price: number;
-    return_transfers: number;
-    duration: number;
-    duration_to: number;
-    duration_back: number;
     transfers: number;
+    stops_airports: string[];
+    no_stops: number;
+    departure_date: string;
+    return_date: string;
+    currency: string;
 }
 
 export const EMPTY_FLIGHT_RESPONSE: FlightResponse = {
-    flight_number: "",
-    link: "",
+    url: -1,
     origin_airport: "",
     destination_airport: "",
-    departure_at: "",
+    local_start_time: '',
+    local_end_time: '',
     airline: "",
-    destination: "",
-    origin: "",
-    price: 0,
-    return_transfers: 0,
-    duration: 0,
-    duration_to: 0,
-    duration_back: 0,
-    transfers: 0
+    price: -1,
+    transfers: -1,
+    stops_airports: [],
+    no_stops: 0,
+    departure_date: "",
+    return_date: "",
+    currency: "",
 }
 
 export interface FlightResponseError {

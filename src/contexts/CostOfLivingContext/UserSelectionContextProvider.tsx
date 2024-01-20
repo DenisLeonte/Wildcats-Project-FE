@@ -9,6 +9,8 @@ interface UserSelectionContextProps {
     setTravelPageOriginCity: (new_city: City) => void;
     travelPageDestinationCity: City;
     setTravelPageDestinationCity: (new_city: City) => void;
+    hotelSearchCity: City;
+    setHotelSearchCity: (new_city: City) => void;
 }
 
 const initialContext: UserSelectionContextProps = {
@@ -18,6 +20,8 @@ const initialContext: UserSelectionContextProps = {
     setTravelPageOriginCity: () => { },
     travelPageDestinationCity: EMPTY_CITY,
     setTravelPageDestinationCity: () => { },
+    hotelSearchCity: EMPTY_CITY,
+    setHotelSearchCity: () => { },
 };
 
 const UserSelectionContext = createContext<UserSelectionContextProps>(initialContext);
@@ -25,6 +29,7 @@ const UserSelectionContext = createContext<UserSelectionContextProps>(initialCon
 export const UserSelectionContextProvider = ({ children }: { children: React.ReactNode }) => {
     const [travelPageOriginCity, setTravelPageOriginCity] = useState<City>(initialContext.travelPageOriginCity);
     const [travelPageDestinationCity, setTravelPageDestinationCity] = useState<City>(initialContext.travelPageDestinationCity);
+    const [hotelSearchCity, setHotelSearchCity] = useState<City>(initialContext.hotelSearchCity);
     const [country, setCountry] = useState(() => {
         try {
             const Country = JSON.parse(localStorage.getItem('country') || "") as Country;
@@ -51,6 +56,8 @@ export const UserSelectionContextProvider = ({ children }: { children: React.Rea
         setTravelPageOriginCity,
         travelPageDestinationCity,
         setTravelPageDestinationCity,
+        hotelSearchCity,
+        setHotelSearchCity,
     };
 
     return (

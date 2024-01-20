@@ -3,18 +3,22 @@ import React from "react";
 interface HotelBoxContent{
     hotelName?:string;
     reviewName?:string;
-    reviewNumber?:string;
-    score?:string;
-    price?:string;
-    duration?:string;
-    numberAdults?:string;
-    bookButton?:string;
+    reviewNumber:number;
+    score:number;
+    price:number;
+    nights:number;
+    numberAdults:number;
+    bookOnClick?:()=>void;
+    imageUri?:string;
 }
 
-const HotelBox: React.FC<HotelBoxContent> = ({ hotelName,reviewName,reviewNumber,score,price,duration,numberAdults,bookButton}) =>{
+const HotelBox: React.FC<HotelBoxContent> = ({ hotelName,reviewName,reviewNumber,score,price,nights,numberAdults,bookOnClick, imageUri}) =>{
     return(
         <div>
             <div className="HotelBox"> 
+                    {imageUri && <div>
+                        <img src={imageUri} />
+                    </div>}
                     <div className="HotelName">
                         {hotelName}
                     </div>
@@ -33,17 +37,17 @@ const HotelBox: React.FC<HotelBoxContent> = ({ hotelName,reviewName,reviewNumber
                     </div>
                     <div className="priceAndDetails">
                         <div className="priceBooking">
-                            {price}
+                            {price + "€"}
                         </div>
                         <div className="durationTrip">
-                            {duration}
+                            {nights + " nights"}
                         </div>
                         <div className="numberAdults">
-                            {numberAdults}
+                            {numberAdults + ' adults'}
                         </div>
                     </div>
-                    <button className="bookButton">
-                        {bookButton}
+                    <button className="bookButton" onClick={bookOnClick}>
+                        Book now
                     </button>  
             </div>
         </div>

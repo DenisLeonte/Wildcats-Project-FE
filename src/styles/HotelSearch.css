@@ -31,7 +31,8 @@
     width:200px;
     height: 35px;
     background-color: white;
-    border: 1px solid var(--text-dark-light, #9D9D9D);
+    border: 3px solid var(--text-dark-light, #9D9D9D);
+    border-radius: 6px;
 }
 
 .hotelSearchBut{
@@ -50,6 +51,7 @@
     align-items: center;
     margin-left:100px;
     position: absolute;
+    cursor: pointer;
 }
 
 .hotelSearchBut>p{
@@ -99,13 +101,20 @@
     border-radius: 20px;
     background: #FFF;
     display: flex;
-    width: 916px;
-    height: 94px;
+    width: 1200px;
+    height: 150px;
     padding: 18px 30px 14.604px 29px;
     justify-content: flex-start;
     flex-shrink: 0;
     gap: 50px;
     align-items: center;
+}
+
+.HotelBox img{
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+    flex-shrink: 0;
 }
 
 .HotelName{
@@ -114,7 +123,7 @@ text-align: center;
 font-family: "Crimson Text", serif;
 font-size: 30px;
 margin: 45px 10px 45px 10px;
-width: 150px;
+width: 350px;
 flex-direction: column;
 }
 
@@ -246,3 +255,40 @@ overflow: hidden;
       border-color: #fff;
 }
 
+
+/* Popup.css */
+.redirecting-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Ensure the popup appears on top of everything */
+  }
+  
+  .redirecting-popup-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .custom-popup {
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* Example of a round font */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px; /* Space inside the popup */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Optional: Adds a shadow for depth */
+    min-height: 150px; /* Sets a minimum height for the popup */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.custom-popup h1 {
+    margin: 0; /* Remove default margins */
+}
