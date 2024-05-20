@@ -4,17 +4,33 @@ services:
     build:
       context: ..
       dockerfile: Docker/Dockerfile
-    volumes: # TO BE USED FOR DEVELOPMENT ONLY
-             # NEEDS TO BE UPDATED FOR PRODUCTION
+    volumes:
       - ../:/app
       - /app/node_modules
       - ../build:/local_build
       - static_files:/volume_build
     command: bash /app/Scripts/startup.sh
-
     ports:
       - '3000:3000'
+    networks:
+      - wildcats-network
+
+  cypress:
+    image: cypress/base:10
+    depends_on:
+      - react-frontend
+    volumes:
+      - ../:/app
+    working_dir: /app
+    command: >
+      sh -c "npm install && npx cypress run"
+    networks:
+      - wildcats-network
 
 volumes:
   static_files:
+    external: true
+
+networks:
+  wildcats-network:
     external: true
