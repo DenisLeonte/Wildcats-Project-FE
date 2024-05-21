@@ -62,7 +62,6 @@ describe('Flight Search Feature', () => {
       cy.visit('http://localhost:8000'); 
       cy.get('.map_bg').scrollIntoView()
       cy.wait(2000);
-  +
       cy.get('#map-container').click(800, 300)
       cy.wait(2000);
   
@@ -83,7 +82,6 @@ describe('Flight Search Feature', () => {
       cy.wait(2000);
       cy.get('.searchButton ').should("be.visible").click({force: true});
       cy.wait(5000);
-      // check if result list is visible and you should not find any div named result
       cy.get('.result').should('not.exist');
     });
   });
